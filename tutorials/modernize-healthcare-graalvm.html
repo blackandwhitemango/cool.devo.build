@@ -1,0 +1,532 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Modernizing the Healthcare platform with a GraalVM Proof of Value - Oracle Developer Tutorials</title>
+<meta name="description" content="Ali makes the case for GraalVM in the healthcare industry by diving deep into a couple strategic solutions.">
+
+
+  <meta name="author" content="Ali Mukadam">
+  
+  <meta property="article:author" content="Ali Mukadam">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Oracle Developer Tutorials">
+<meta property="og:title" content="Modernizing the Healthcare platform with a GraalVM Proof of Value">
+<meta property="og:url" content="https://cool.devo.build/tutorials/modernize-healthcare-graalvm">
+
+
+  <meta property="og:description" content="Ali makes the case for GraalVM in the healthcare industry by diving deep into a couple strategic solutions.">
+
+
+
+  <meta property="og:image" content="https://cool.devo.build/tutorials/assets/modernize-healthcare-ambulance.jpeg">
+
+
+
+
+  <meta name="twitter:site" content="@groundbreakers">
+  <meta name="twitter:title" content="Modernizing the Healthcare platform with a GraalVM Proof of Value">
+  <meta name="twitter:description" content="Ali makes the case for GraalVM in the healthcare industry by diving deep into a couple strategic solutions.">
+  <meta name="twitter:url" content="https://cool.devo.build/tutorials/modernize-healthcare-graalvm">
+
+  
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://cool.devo.build/tutorials/assets/modernize-healthcare-ambulance.jpeg">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2021-11-24T10:11:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://cool.devo.build/tutorials/modernize-healthcare-graalvm">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://cool.devo.build/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/main.xml" type="application/atom+xml" rel="alternate" title="Oracle Developer Tutorials Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+<link rel="icon" href="https://www.oracle.com/asset/web/favicons/favicon-32.png" sizes="32x32">
+
+    
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead oracle-header oracle-headerv1 oracle-headeradj oracle-headerdev">
+  <div class="masthead__inner-wrap oracle-headerw1">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <div class="oracle-headers1 site-logo">
+          <a class="oracle-logo" href="https://developer.oracle.com/"><span>Oracle</span></a>
+        </div>
+        <div class="u18-title site-title">
+          <a href="/">
+            Oracle Developer Tutorials
+            
+          </a>
+        </div>
+
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/topics/">Explore Topics</a>
+            </li><li class="masthead__menu-item">
+            <a href="https://signup.cloud.oracle.com/?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted">Try Oracle Free</a>
+          </li>
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+
+    <div class="sidebar sticky">
+    <p><strong>Tags:</strong> <span class="tags">
+
+            
+            <a class="animated-link tag" href="/topics/graalvm">graalvm</a>
+            <a class="animated-link tag" href="/topics/devops">devops</a>
+            </span>
+    </p>
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <a href="https:/lmukadam.medium.com"><h3 class="author__name" itemprop="name">Ali Mukadam</h3></a>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>For the past 16 years, Ali has held technical presales, architect and industry consulting roles in BEA Systems and Oracle across Asia Pacific, focusing on middleware and application development. Although he pretends to be Thor, his real areas of expertise are Application Development, Integration, SOA (Service Oriented Architecture) and BPM (Business Process Management).</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/alimukadam" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  
+  
+  
+
+  </div>
+
+
+  <article class="page has-sidebar" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Modernizing the Healthcare platform with a GraalVM Proof of Value">
+    
+    <meta itemprop="datePublished" content="2021-11-24T10:11:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Modernizing the Healthcare platform with a GraalVM Proof of Value
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+
+        <picture class="alignright">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-ambulance.jpeg 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-ambulance.jpeg" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-ambulance.jpeg" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-ambulance@2x.jpeg" alt="“Stock ambulance visual”" title="“Stock ambulance visual”" />
+            </picture>
+
+<p>Imagine a Fortune 5 company, empowering millions of people worldwide with the information, guidance, and tools to make personal health choices, setting  out to work on two parallel streams for modernizing their HealthCare platform’s Cloud-Native tech stack.</p>
+
+<ul>
+  <li>
+    <p><strong>Stream 1</strong>: Existing Microservices comprise Java 8 + Spring + OpenJDK JIT as JRE, to be containerized in a Hybrid Cloud platform.</p>
+  </li>
+  <li>
+    <p><strong>Stream 2</strong>: New Microservices with Kotlin + SpringBoot + OpenJDK 11 / GraalVM JIT, to be containerized in a Public Cloud platform.</p>
+  </li>
+</ul>
+
+<h2 id="tactical-solution--just-in-time-with-stream-1">Tactical Solution — just-in-time with Stream 1:</h2>
+
+<ul>
+  <li>Lift and Shift Stream 1 from existing Hotspot JIT to GraalVM JIT</li>
+  <li>Evaluate memory footprint, execution time improvement, and peak throughput with GraalVM</li>
+  <li>Benchmark Stream 1 with GraalVM JIT vs HotSpot JIT on performance heuristics</li>
+  <li>Endurance Testing with business-critical Healthcare API for benchmarking</li>
+</ul>
+
+<h2 id="strategic-solution--ahead-of-time-with-stream-2">Strategic Solution — ahead-of-time with Stream 2:</h2>
+
+<ul>
+  <li>Application re-writes are planned and primarily targeted for the Public Cloud Platform</li>
+  <li>Stream 2 tech stack is being considered with GraalVM Enterprise as an option depending on the outcome of Stream 1 benchmarking results</li>
+  <li>Serverless (initial thoughts) has got some excitement for GraalVM’s Native-Image due to memory footprint and cold-startup optimization</li>
+</ul>
+
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-api-exchange.png 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-api-exchange.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-api-exchange.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-api-exchange@2x.png" alt="“Brand logos for FHIR and Cloud Native Computing Foundation”" title="“Brand logos for FHIR and Cloud Native Computing Foundation”" />
+            </picture>
+
+<h2 id="healthcare-context">Healthcare Context</h2>
+
+<p>Interoperable healthcare IT enables clinicians to improve care coordinations and ensure that the information available to view in the healthcare services is part of a practitioners’ workflow.</p>
+
+<p>In terms of the technology stack, here are some considerations and goals:</p>
+
+<ol>
+  <li>Huge employee base, hundreds of APIs, and countless integrations and external systems</li>
+  <li>Optimize healthcare technology in order to provide a scalable tech infrastructure</li>
+  <li>Eliminate Local Resource Constraints for Building Cloud-Native Applications</li>
+  <li>Implement patterns and practices defined by DevOps and Cloud Centre of Excellence</li>
+</ol>
+
+<h3 id="support-for-open-healthcare-standards">Support for Open Healthcare Standards</h3>
+
+<p>HL7 FHIR is a standard for health care data exchange published by HL7 (HL7 and its members provide a framework for the exchange, integration, sharing, and retrieval of electronic health information).</p>
+
+<p>The CNCF Cloud Native Computing Foundation serves as the vendor-neutral home for many of the fastest-growing open-source projects</p>
+
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-hl7r.png 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-hl7r.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-hl7r.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-hl7r@2x.png" alt="“HL7 Logo”" title="“HL7 Logo”" />
+            </picture>
+
+<h2 id="research-and-evaluation-proof-of-value">Research and Evaluation Proof of Value</h2>
+
+<p>The engineering team identified key Proof-of-Value initiatives to optimize the existing tech stack with GraalVM without code changes, iteratively running performance loads with identified heuristics, benchmark observations, and comparisons. Initial performance load on GraalVM and benchmarking it against conventional JDKs (OpenJDK) for feasibility analysis. This included two rounds for performance evaluation.</p>
+
+<p>As a leading healthcare company (Fortune #5), the peak season is typically at the start of the year for all health plans renewables in the US, hence the priority at that time was to support business peak load in tech frozen state for 1–2 months. This resumed towards the end of Q1 2021.</p>
+
+<h3 id="graalvm-ee-v21x-on-jdk8">GraalVM EE v21.x on JDK8</h3>
+
+<p>Actual load runs on Dev Environment Sandbox.</p>
+
+<p>Load Configuration Details:</p>
+
+<ul>
+  <li>Concurrency: 100 users</li>
+  <li>Ramp-up: 4 seconds</li>
+  <li>Duration: 4 hours, 14400 seconds</li>
+</ul>
+
+<p>The Clinical API was subjected to a medium spike load as part of the warm-up phase and peak throughput phase.</p>
+
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-load-test.png 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-load-test.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-load-test.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-load-test@2x.png" alt="Load Test Configuration" title="Load Test Configuration" />
+            </picture>
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-responsetimegraph.png 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-responsetimegraph.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-responsetimegraph.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-responsetimegraph@2x.png" alt="Response Time Graph" title="Response Time Graph" />
+            </picture>
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-summary-report.png 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-summary-report.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-summary-report.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-summary-report@2x.png" alt="Summary report of results" title="Summary report of results" />
+            </picture>
+
+<p>The evaluation results are summarized in the table below. GraalVM performed better than Open JDK8 in most of the runs and gets better for longer runs.</p>
+
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-perform-characteristics.png 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-perform-characteristics.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-perform-characteristics.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/modernize-healthcare-perform-characteristics@2x.png" alt="“Performance characteristics of GraalVM Enterprise vs. other runtimes”" title="“Performance characteristics of GraalVM Enterprise vs. other runtimes”" />
+            </picture>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This collaboration has been mutually beneficial. Specfically, from learning about the implications of GraalVM in the healthcare domain by optimizing its workflow and improving patient outcomes and experience.</p>
+
+<p>To learn more and get started with GraalVM, visit https://www.oracle.com/graalvm</p>
+
+<p>Thanks to Pratik Prakash, Senior Member of Engineering at UnitedHealth Group, and Amitpal Singh Dhillon, Regional Director for Oracle Labs in Asia-Pacific &amp; Japan, for their help in writing this blog post.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-11-24T10:11:00+00:00">November 24, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/main.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+    <li>
+      Back to <a href="https://developer.oracle.com?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildFooter&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetFooter">Developer.Oracle.com</a>
+    </li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Oracle</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="/assets/js/custom.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  
+    <script src="/assets/js/plugins/readmore.min.js"></script>
+  
+
+
+<!-- Start SiteCatalyst code -->
+<script>
+  var s_pageName = "devrel:en-us:";
+  if (typeof(document.title) != "undefined") {
+    var s_pageName = s_pageName + document.title.trim()
+  };
+</script>
+<script src="https://www.oracleimg.com/us/assets/metrics/ora_otn.js"></script>
+<!-- End SiteCatalyst code -->
+
+
+  </body>
+  
+</html>

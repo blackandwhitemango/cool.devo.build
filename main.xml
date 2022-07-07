@@ -1,0 +1,2249 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
+  <link href="https://cool.devo.build/main.xml" rel="self" type="application/atom+xml" />
+  <link href="https://cool.devo.build/" rel="alternate" type="text/html" />
+  <updated>2022-07-07T21:39:26+00:00</updated>
+  <id>https://cool.devo.build/main.xml</id>
+
+  
+
+  
+    <title type="html">Oracle Developer Tutorials</title>
+  
+
+  
+    <subtitle>Cool stuff from Oracle's Developer Relations team</subtitle>
+  
+
+  
+    <author>
+        <name>Oracle Developer Community</name>
+      
+      
+    </author>
+  
+
+  
+  
+  
+  
+  
+    <entry>
+      
+
+      <title type="html">HeatWave on AWS Metrics and Performance Tools</title>
+      <link href="https://cool.devo.build/tutorials/metrics-and-performance-hw-aws-devrel0622" rel="alternate" type="text/html" title="HeatWave on AWS Metrics and Performance Tools" />
+      <published>2022-06-16T17:00:00+00:00</published>
+      <updated>2022-06-16T17:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/metrics-and-performance-hw-aws-devrel0622</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/metrics-and-performance-hw-aws-devrel0622">&lt;p&gt;As you’re working with your data, you’ll want to check out the performance of MySQL HeatWave on AWS, and we provide a number of metrics for you to examine.&lt;/p&gt;
+
+&lt;h3 id=&quot;heatwave-cluster-workspaces&quot;&gt;HeatWave Cluster Workspaces&lt;/h3&gt;
+
+&lt;p&gt;{% imgx assets/hwaws-query_already_run-devrel0622.png %}&lt;/p&gt;
+
+&lt;p&gt;Above, we see the Workspaces tab in the Console, having just run a query. While we see a memory snapshot, we can go deeper in the Performance tab.&lt;/p&gt;
+
+&lt;h3 id=&quot;performance&quot;&gt;Performance&lt;/h3&gt;
+
+&lt;p&gt;{% imgx assets/hw_performance_monitoring-devrel0622.png %}&lt;/p&gt;
+
+&lt;p&gt;Here’s the good stuff! Not only can you see performance per node, you can see the size of the dataset, the data dictionary, and if you click on Workload on the left side, you’ll see duration each step of the query took, and when queries have taken place.&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/hw_performance_monitoring_03-devrel0622.png %}&lt;/p&gt;
+
+&lt;p&gt;Clicking back on Cluster and scrolling down, we can see metrics related to the VM itself, including memory and connection usage, CPU, and so on. If you’re keen on squeezing every drop of performance that you can out of HeatWave on AWS, we got you.&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/hw_performance_monitoring_02-devrel0622.png %}&lt;/p&gt;
+
+&lt;p&gt;Want to know more? Join the discussion in our &lt;a href=&quot;https://bit.ly/devrel_slack&quot;&gt;public Slack channel&lt;/a&gt;!&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Victor Agreda</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="cloudapps" />
+        
+      
+
+      
+        <category term="mysql" />
+      
+        <category term="database" />
+      
+        <category term="heatwave" />
+      
+      <summary type="html">A quick overview of the performance and metrics console windows in MySQL HeatWave on AWS.</summary>
+
+      
+      
+    </entry>
+  
+    <entry>
+      
+
+      <title type="html">Using the AWS Migration Service with HeatWave on AWS with WordPress as an Example</title>
+      <link href="https://cool.devo.build/tutorials/using-aws-migration-service-wp-ex-devrel0622" rel="alternate" type="text/html" title="Using the AWS Migration Service with HeatWave on AWS with WordPress as an Example" />
+      <published>2022-06-16T17:00:00+00:00</published>
+      <updated>2022-06-16T17:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/using-aws-migration-service-wp-ex-devrel0622</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/using-aws-migration-service-wp-ex-devrel0622">&lt;p&gt;Now let’s try something really fun. Let’s say you’ve already got a database using Aurora or RDS, in our case we’ll use a WordPress database, and you want to migrate it to MySQL HeatWave on AWS.&lt;/p&gt;
+
+&lt;p&gt;First, we’ll need to have a MySQL DB System on HeatWave already, and a critical step is opening port 3306, shown below.&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/create-mysqldbsys-devrel0622.png %}&lt;/p&gt;
+
+&lt;p&gt;Great! Now let’s head over to AWS.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Log in to your AWS console, and use search for “DMS” — Database Migration Service, it’ll be the top result.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/awsdbs-migrationservice-search-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click Create replication instance.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step2-create-replication-awshw-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Fill out a Name, Amazon Resource Name (ARN), description. You may use whichever shape you like, but keep in mind performance:cost here. Engine version should be fine, as well as storage (unless you have a truly massive database, in which case adjust accordingly).&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/arn-form-repinstance-awshw-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;For VPC, choose one you have previously set up with the appropriate access controls for development work. And make sure it is publicly accessible. For Multi AZ, we’ll use a single availability zone, dev or test workload.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step4-vpcsetup-awshw-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click to open the Advanced security and network configurations. The subnet group will follow the VPC you chose above, and the availability zone should be US-East. The security groups should be populated with any you created earlier, ensuring ports are available (LINK TK to DOCS on this).&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step5-advanc-netsec-awshw-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It will take a few minutes for the replication instance to spin up. Coffee time!&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step6-creating-instance-awshw-wpex-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once it’s ready, we’ll need to get the Public IP address for our endpoint. Go to the Endpoints section. On the right you’ll see a Create Endpoint button, click it.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step7a-awsdms-endpoints-awshw-wpex-devrel0622.png %} {% imgx assets/step7b-create-endpoint-button-awshw-wpex-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select Source endpoint, and check Select RDS DB Instance. You should see the RDS Instance field populate with what’s available to you.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step8-create-endpoint-awshw-wpex-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;For Endpoint configuration, you’ll have the identifier, ARN, and source engine pre-filled, but we want to provide the access to endpoint database information manually, so click that radio button. Then, enter the appropriate database information for the db you’re moving over.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step9-endpoint-config-awshw-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Then, you should be able to test the endpoint connection below.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step10-testendpoint-awshw-wpex-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now, we’ll create a second endpoint as our destination.
+To do this, we return to the MySQL HeatWave on AWS Console, and click MySQL DB Systems.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step11-mysql-dbsystems-onaws-awshw-wpex-devrel0622.png %}&lt;/p&gt;
+
+    &lt;p&gt;Then, click on the DB System you wish to use, and in Summary you will find the Host Name. Copy the string.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Go back to AWS console, and click to create another endpoint. Except this time we’ll create a Target endpoint! Naturally.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step12-create-endpoint-aws-awshw-wpex-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In Endpoint configuration, give it a name (identifier), choose MySQL under Target Engine. ARN is optional.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/step13-target-engin-awshw-wpex-devrel0622.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once again, we’ll provide access information manually. The server name is the host name you previously copied. Port is 3306. The username/password will match the one you created for the target database.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now you have your endpoint, username/password, and can use this when creating a HeatWave on AWS cluster to connect a DB System and run queries. Refer to the HeatWave on AWS documentation for more.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote class=&quot;notice&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; MySQL Shell is the recommended utility for exporting data from a source MySQL Server and importing it into a DB System on the MySQL HeatWave on AWS. MySQL Shell dump and load utilities are purpose- built for use with MySQL DB Systems. For more on running queries with HeatWave, please refer to the &lt;a href=&quot;https://dev.mysql.com/doc/heatwave/en/heatwave-running-queries.html&quot;&gt;MySQL documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Want to know more? Join the discussion in our &lt;a href=&quot;https://bit.ly/devrel_slack&quot;&gt;public Slack channel&lt;/a&gt;!&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Victor Agreda</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="cloudapps" />
+        
+      
+
+      
+        <category term="mysql" />
+      
+        <category term="database" />
+      
+        <category term="heatwave" />
+      
+      <summary type="html">A quick example of how you can move data over for use in MySQL HeatWave on AWS.</summary>
+
+      
+      
+    </entry>
+  
+    <entry>
+      
+
+      <title type="html">Connecting To and Managing HeatWave on AWS</title>
+      <link href="https://cool.devo.build/tutorials/connecting-managing-heatwave-aws-devrel0622" rel="alternate" type="text/html" title="Connecting To and Managing HeatWave on AWS" />
+      <published>2022-06-16T17:00:00+00:00</published>
+      <updated>2022-06-16T17:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/connecting-managing-heatwave-aws-devrel0622</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/connecting-managing-heatwave-aws-devrel0622">&lt;p&gt;It’s a multi-cloud world today, and that’s why MySQL HeatWave for Amazon Web Service gives you a massively parallel, high performance, in-memory query accelerator for the MySQL Database Service as a fully managed service, developed and supported by the MySQL team in Oracle. This accelerates MySQL performance by orders of magnitude for combined analytics and transactional workloads (OLAP and OLTP).&lt;/p&gt;
+
+&lt;picture class=&quot;&quot;&gt;
+                &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/networkdiagram-hwaws-oci-devrel0622a.png 1x&quot; /&gt;
+                &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/networkdiagram-hwaws-oci-devrel0622a.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/networkdiagram-hwaws-oci-devrel0622a.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/networkdiagram-hwaws-oci-devrel0622a@2x.png&quot; /&gt;
+            &lt;/picture&gt;
+
+&lt;p&gt;Oracle designed this so developers can focus on the important things, like managing data, creating schemas, and providing highly-available applications. Oracle automates tasks such as backup, recovery, and database and operating system patching.&lt;/p&gt;
+
+&lt;p&gt;If you’ve never heard of HeatWave, think of it as a database query accelerator with boost buttons. One of the incredible things about Oracle MySQL HeatWave is the ability to &lt;a href=&quot;https://www.oracle.com/mysql/heatwave/&quot;&gt;run analytics&lt;/a&gt; directly against your existing transactional data, so there’s no need to shuffle that data off to a separate system when you need to perform massively parallel analysis.&lt;/p&gt;
+
+&lt;p&gt;Let’s get started!&lt;/p&gt;
+
+&lt;p&gt;MySQL HeatWave on AWS resides in an Oracle-managed tenancy on AWS. You can access it from the browser-based HeatWave Console or from a MySQL client or application. For this article, we’ll just dip our toe in by signing in, provisioning the service, and seeing an overview of what the HeatWave Console offers.&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;The MySQL HeatWave Console supports browser platforms supported by Oracle Jet, such as the following browsers and versions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Google Chrome 69 or later&lt;/li&gt;
+  &lt;li&gt;Safari 12.1 or later&lt;/li&gt;
+  &lt;li&gt;Firefox 62 or later&lt;/li&gt;
+  &lt;li&gt;The Console does not support Firefox Private Browsing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You’ll also need an AWS account, optionally an OCI account as well.&lt;/p&gt;
+
+&lt;p&gt;Plus, you’ll need a DB System somewhere to connect to the HeatWave instance (this could be a HeatWave cluster in an OCI tenancy, for example).&lt;/p&gt;
+
+&lt;h2 id=&quot;signing-up&quot;&gt;Signing Up&lt;/h2&gt;
+
+&lt;p&gt;To sign up for MySQL HeatWave on AWS (if you don’t have an Oracle account):&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Navigate your browser to &lt;a href=&quot;http://cloud.mysql.com/&quot;&gt;http://cloud.mysql.com/&lt;/a&gt;. You are taken to the MySQL HeatWave on AWS welcome page.&lt;/li&gt;
+  &lt;li&gt;Click Sign Up. A field is displayed for entering your email address.&lt;/li&gt;
+  &lt;li&gt;Enter your email address and click Continue.
+    &lt;picture class=&quot;&quot;&gt;
+             &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/welcome2-mysqlhw-signup-actname-devrel0622a.png 1x&quot; /&gt;
+             &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/welcome2-mysqlhw-signup-actname-devrel0622a.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/welcome2-mysqlhw-signup-actname-devrel0622a.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/welcome2-mysqlhw-signup-actname-devrel0622a@2x.png&quot; /&gt;
+         &lt;/picture&gt;
+    &lt;p&gt;You are directed to an Account Information page for creating an Oracle Cloud account, which is required to use MySQL HeatWave on AWS.&lt;/p&gt;
+    &lt;blockquote class=&quot;notice&quot;&gt;
+      &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Do NOT change your Oracle Cloud Account name after provisioning the MySQL HeatWave on AWS service, as it can cause a loss of access to the MySQL HeatWave on AWS service, requiring Support assistance.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Enter the required information and click Verify my email. A verification email is sent to the specified address. This may take a minute!&lt;/li&gt;
+  &lt;li&gt;In the verification email, click on the verification link.
+ You are directed to a page for verifying the email address and providing initial account information. Follow the prompts. After providing the initial account information, you’ll go to a Get Started page in the Oracle Cloud Infrastructure (OCI) Console, which includes an Enable MySQL HeatWave on AWS link in the Quickstarts section of the page.&lt;/li&gt;
+  &lt;li&gt;Click Enable MySQL HeatWave on AWS.&lt;br /&gt;
+You are directed to a MySQL HeatWave on AWS Administration page where you are presented with a dialog that guides you through the setup process.
+    &lt;picture class=&quot;&quot;&gt;
+             &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/hwaws-quickstart-enablehwaws-devrel0622a.png 1x&quot; /&gt;
+             &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/hwaws-quickstart-enablehwaws-devrel0622a.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/hwaws-quickstart-enablehwaws-devrel0622a.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/hwaws-quickstart-enablehwaws-devrel0622a@2x.png&quot; /&gt;
+         &lt;/picture&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A paid account is required to use MySQL HeatWave on AWS. Follow the prompts to complete the account upgrade process. You will be prompted to select an account type and payment method. When the upgrade process is complete, you are directed to the OCI Console.
+    &lt;picture class=&quot;&quot;&gt;
+             &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/upgd-awshw-account-reqscrn-devrel0622.png 1x&quot; /&gt;
+             &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/upgd-awshw-account-reqscrn-devrel0622.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/upgd-awshw-account-reqscrn-devrel0622.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/upgd-awshw-account-reqscrn-devrel0622@2x.png&quot; /&gt;
+         &lt;/picture&gt;
+  &lt;/li&gt;
+  &lt;li&gt;From the OCI Console navigation menu, select Databases. MySQL HeatWave on AWS appears on the Home tab under the Featured label.&lt;/li&gt;
+  &lt;li&gt;Under MySQL HeatWave on AWS, click Administration. You are returned to the setup dialog.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click Provision to provision MySQL HeatWave on AWS.&lt;/p&gt;
+
+    &lt;p&gt;After the provisioning operation is completed, a message appears stating that MySQL HeatWave on AWS is ready and you are presented with options to open the MySQL HeatWave console, set up users, and view billing information.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;for-those-with-an-existing-oracle-account&quot;&gt;For those with an existing Oracle account&lt;/h3&gt;
+
+&lt;p&gt;MySQL HeatWave on AWS requires a subscription to the US East (Ashburn) region on OCI. MySQL HeatWave on AWS is integrated with OCI in the US East (Ashburn) region for identity and access management and billing. You are billed for the MySQL HeatWave on AWS Service in the US East (Ashburn) region.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Navigate your browser to &lt;a href=&quot;http://cloud.mysql.com/&quot;&gt;http://cloud.mysql.com/&lt;/a&gt;.&lt;br /&gt;
+You are taken to the MySQL HeatWave on AWS welcome page.&lt;/li&gt;
+  &lt;li&gt;Enter your Oracle Cloud Account name and click Continue.&lt;br /&gt;
+You are directed to a Get Started page in the Oracle Cloud Infrastructure (OCI) Console, which includes an Enable MySQL HeatWave on AWS link in the Quickstarts section of the page.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click Enable MySQL HeatWave on AWS.&lt;br /&gt;
+You are directed to a MySQL HeatWave on AWS Administration page where you are presented with a dialog that guides you through the setup process.&lt;/p&gt;
+
+    &lt;blockquote class=&quot;warn&quot;&gt;
+      &lt;p&gt;&lt;strong&gt;IMPORTANT:&lt;/strong&gt; A paid account is required to use MySQL HeatWave on AWS. If you do not have a paid account, follow the prompts to compete the account upgrade process. You will be prompted to select an account type and payment method. When the upgrade process is complete, you are directed to the OCI Console.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;From the OCI Console navigation menu, select Databases.&lt;br /&gt;
+MySQL HeatWave on AWS appears on the Home tab under the Featured label.&lt;/li&gt;
+  &lt;li&gt;Under MySQL HeatWave on AWS, click Administration.&lt;br /&gt;
+You’ll go back to the setup dialog.&lt;/li&gt;
+  &lt;li&gt;Click Provision to provision MySQL HeatWave on AWS.
+    &lt;picture class=&quot;&quot;&gt;
+             &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/provision-requpg-hwaws-setup-devrel0622a.png 1x&quot; /&gt;
+             &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/provision-requpg-hwaws-setup-devrel0622a.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/provision-requpg-hwaws-setup-devrel0622a.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/provision-requpg-hwaws-setup-devrel0622a@2x.png&quot; /&gt;
+         &lt;/picture&gt;
+
+    &lt;p&gt;After the provisioning operation is completed, a message appears stating that MySQL HeatWave on AWS is ready and you are presented with options to open the MySQL HeatWave console, set up users, and view billing information.&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+             &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/congrats-mysqlhwaws-openconsol-devrel0622a.png 1x&quot; /&gt;
+             &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/congrats-mysqlhwaws-openconsol-devrel0622a.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/congrats-mysqlhwaws-openconsol-devrel0622a.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/congrats-mysqlhwaws-openconsol-devrel0622a@2x.png&quot; /&gt;
+         &lt;/picture&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;signing-in&quot;&gt;Signing In&lt;/h2&gt;
+
+&lt;p&gt;To sign in to MySQL HeatWave on AWS, you must have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Your Oracle Cloud Account name.&lt;br /&gt;
+This is the Cloud Account name you chose during account signup or that was provided to you by an Account Administrator. In either case, you can find your Cloud Account name in your Oracle Cloud Account welcome email.&lt;/li&gt;
+  &lt;li&gt;Your Cloud Account user name and password.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s get started!&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Point your browser to &lt;a href=&quot;http://cloud.mysql.com/&quot;&gt;http://cloud.mysql.com/&lt;/a&gt;&lt;br /&gt;
+You are taken to the MySQL HeatWave on AWS welcome page. You’re familiar by now with this screen.&lt;/li&gt;
+  &lt;li&gt;Enter your Cloud Account name.&lt;/li&gt;
+  &lt;li&gt;Click Continue.
+You are directed to the Oracle Cloud Account Sign In dialog.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Enter your user name and password and click Sign In.&lt;/p&gt;
+
+    &lt;p&gt;Once your user name and password are authenticated, you are directed to the HeatWave Console. Eventually you’ll need to create users and groups (for various levels of access control), and luckily you can access the Oracle Identity Cloud Service from the MySQL HEatWave on AWS Console:&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;Sign into the HeatWave Console as an Account Administrator.&lt;/li&gt;
+      &lt;li&gt;From the profile menu, select Administration.&lt;br /&gt;
+You are directed to the MySQL HeatWave on AWS Administration page in the OCI Console.&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Select Identity Service.&lt;/p&gt;
+
+        &lt;p&gt;This will take you to the Identity section in the OCI Account Center.&lt;/p&gt;
+
+        &lt;picture class=&quot;&quot;&gt;
+          &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/mysqlhw-awsconsole-2view-signin-devrel0622a.png 1x&quot; /&gt;
+          &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/mysqlhw-awsconsole-2view-signin-devrel0622a.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/mysqlhw-awsconsole-2view-signin-devrel0622a.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/mysqlhw-awsconsole-2view-signin-devrel0622a@2x.png&quot; /&gt;
+      &lt;/picture&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;whats-next&quot;&gt;What’s Next?&lt;/h2&gt;
+
+&lt;p&gt;From here, you can log into the MySQL HeatWave on AWS Console and create a MySQL DB System, manage them, see HeatWave Clusters, Workspaces (where you can create and run queries), and Performance (analytics) to see how efficient HeatWave is.&lt;/p&gt;
+
+&lt;picture class=&quot;&quot;&gt;
+                &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/1-mysql-heatwave-on-aws-console-devrel-fy2361022.png 1x&quot; /&gt;
+                &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/1-mysql-heatwave-on-aws-console-devrel-fy2361022.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/1-mysql-heatwave-on-aws-console-devrel-fy2361022.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/1-mysql-heatwave-on-aws-console-devrel-fy2361022@2x.png&quot; /&gt;
+            &lt;/picture&gt;
+
+&lt;h3 id=&quot;connecting-to-a-db-system-in-workspaces&quot;&gt;Connecting to a DB System in Workspaces&lt;/h3&gt;
+
+&lt;p&gt;By now you’ve got MySQL HeatWave on AWS provisioned, and you want to connect it to a DB System somewhere. We do this in the Workspaces tab in the console.&lt;/p&gt;
+
+&lt;p&gt;A Connection Information dialog will appear, and you choose a DB System from the drop-down, enter the proper username/password combo, and click Connect.&lt;/p&gt;
+
+&lt;h3 id=&quot;managing-heatwave-cluster-data&quot;&gt;Managing HeatWave Cluster Data&lt;/h3&gt;
+
+&lt;p&gt;Also in the Workspaces tab, we can use the Console to load or unload data from a HeatWave cluster. Here’s how:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;In the DB System workspace, expand the Manage Data in HeatWave pane.&lt;/li&gt;
+  &lt;li&gt;Select the databases and tables that you want to load or unload. Databases are selected in the Databases pane. When a database is selected, the tables from the selected database appear in the Tables from selected databases pane.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There’s lots to see there but we’re interested in selecting the tables we want to load or unload, so click Load into HeatWave or Unload from HeatWave.&lt;/p&gt;
+
+    &lt;p&gt;If you’re loading tables, the MySQL Auto Parallel Load tables into Heatwave dialog appears, providing a summary of the load operation about to happen.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click Load Tables to start the parallel load operation.&lt;/p&gt;
+
+    &lt;p&gt;To stop a load or unload operation, click Stop Load/Unload.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote class=&quot;notice&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The Refresh button refreshes the page, displaying the current state of databases and tables loaded in HeatWave.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;creating-backups&quot;&gt;Creating Backups&lt;/h3&gt;
+
+&lt;p&gt;To create a DB System backup:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;In the HeatWave Console, select the MySQL DB Systems tab. Under MySQL, select DB Systems.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the list of DB Systems, find the DB System you want to create a backup for, and do one of the following:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Click on the row of the DB System to highlight it, and choose Create Backup from the Actions menu.&lt;/li&gt;
+      &lt;li&gt;Click the name of the DB System to open the DB System Details page. Click Create Backup. The Create Backup dialog is displayed.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Edit the fields as required:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Display Name: The name of the backup.&lt;br /&gt;
+If you do not define a name, one is generated in the format &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DB-System-Name - Backup - Date&amp;amp;Time&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Description: The description of the backup.&lt;br /&gt;
+If you do not define a description, one is generated in the format &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DB-System-Name - Manual Backup - Date&amp;amp;Time&lt;/code&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Click Create to create the backup.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;maintenance&quot;&gt;Maintenance&lt;/h3&gt;
+
+&lt;p&gt;Good news! Essential patching and maintenance of MySQL DB Systems is an automatic process. Patches of the underlying operating system, update versions (-uN) of the MySQL server, and any underlying hardware are performed during the Maintenance Window defined on the DB System. A Maintenance Window Start Time is defined for you, automatically, and can be viewed on the DB System Details page in the MySQL HeatWave on AWS Console.&lt;/p&gt;
+
+&lt;p&gt;When maintenance is performed, your DB System’s status changes to UPDATING and the DB System may be unavailable for a short time while the maintenance completes.&lt;/p&gt;
+
+&lt;p&gt;Such maintenance is performed infrequently, and only when absolutely necessary. This is usually for security or reliability issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;upgrading-mysql-server&quot;&gt;Upgrading MySQL Server&lt;/h3&gt;
+
+&lt;p&gt;Use the Console to manually upgrade the MySQL Server of your DB system.&lt;/p&gt;
+
+&lt;blockquote class=&quot;notice&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; It is recommended to perform a full backup of your DB system before upgrading.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;In the HeatWave Console, select the MySQL DB Systems tab.&lt;/li&gt;
+  &lt;li&gt;Under MySQL, select DB Systems.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find the DB system you want to upgrade, and do one of the following:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Click on the row of the DB System to highlight it, and choose Edit MySQL Version from the Actions menu. If this option is not enabled, your DB system is already using the latest version of the MySQL Server.&lt;/li&gt;
+      &lt;li&gt;Click the name of the DB System to open the DB System Details page. Click Edit MySQL Version. If this button is not enabled, your DB system is already using the latest version of the MySQL Server.
+ The Edit MySQL Version dialog is displayed.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;In the Edit MySQL Version, select the required MySQL version.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click Save Changes.&lt;/p&gt;
+
+    &lt;p&gt;The DB system enters the UPDATING state while the MySQL Server is upgraded.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;managing-a-heatwave-cluster&quot;&gt;Managing a HeatWave Cluster&lt;/h3&gt;
+
+&lt;p&gt;When a HeatWave cluster is stopped through a stop or restart action, the data loaded in HeatWave cluster memory is lost.&lt;/p&gt;
+
+&lt;h3 id=&quot;starting-stopping-or-restarting-a-heatwave-cluster&quot;&gt;Starting, stopping, or restarting a HeatWave Cluster&lt;/h3&gt;
+
+&lt;p&gt;These actions have no effect on the DB System to which the HeatWave cluster is attached. However, start, stop, or restart actions on the DB System also affect the attached HeatWave cluster. When a HeatWave cluster is stopped as a result of a stop or restart action on the DB System, any data that was loaded on the HeatWave cluster must be reloaded when the HeatWave cluster is restarted.&lt;/p&gt;
+
+&lt;p&gt;To start, stop, or restart a HeatWave cluster:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;In the HeatWave Console, select the HeatWave Clusters tab.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the list of HeatWave clusters, find the HeatWave cluster you want to start, stop, or restart, and do one of the following:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Click on the row of the HeatWave cluster to highlight it, and choose the required action from the Actions menu.&lt;/li&gt;
+      &lt;li&gt;Click the name of the HeatWave cluster to open the HeatWave Cluster Details page. On this page you can stop, start, or restart the HeatWave cluster.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select one of the following actions:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Start: Starts a stopped HeatWave cluster. After the HeatWave cluster is started, the Stop action is enabled and the Start option is disabled.&lt;/li&gt;
+      &lt;li&gt;Stop: Stops a running HeatWave cluster. After the HeatWave cluster is stopped, the Start action is enabled.&lt;/li&gt;
+      &lt;li&gt;Restart: Shuts down a HeatWave cluster and restarts it.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;deleting-a-heatwave-cluster&quot;&gt;Deleting a HeatWave Cluster&lt;/h3&gt;
+
+&lt;p&gt;Deleting a HeatWave cluster removes the HeatWave cluster nodes permanently. The DB System to which the HeatWave cluster is attached is unaffected. Perhaps you just want to crunch some data for a bit, while keeping costs low. Bear in mind, the cluster will need to be set up from scratch again after deletion, so there’s that.&lt;/p&gt;
+
+&lt;p&gt;To delete a HeatWave cluster:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;In the HeatWave Console, select the HeatWave Clusters tab.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the list of HeatWave clusters, find the HeatWave cluster you want to delete, and do one of the following:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Click on the row of the HeatWave cluster to highlight it, and choose the Delete action from the Actions menu.&lt;/li&gt;
+      &lt;li&gt;Click the name of the HeatWave cluster to open the HeatWave Cluster Details page. Click the Delete button.
+ The Delete HeatWave Cluster dialog is displayed.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Click Delete HeatWave cluster.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That’s a top-level overview of getting your HeatWave on AWS set up, and a little bit of management.&lt;/p&gt;
+
+&lt;p&gt;Want to know more? Join the discussion in our &lt;a href=&quot;https://bit.ly/devrel_slack&quot;&gt;public Slack channel&lt;/a&gt;!&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Victor Agreda</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="cloudapps" />
+        
+      
+
+      
+        <category term="mysql" />
+      
+        <category term="database" />
+      
+        <category term="heatwave" />
+      
+        <category term="aws" />
+      
+      <summary type="html">Getting signed up, signed on, and some basic management tasks for your HeatWave on AWS cluster.</summary>
+
+      
+      
+    </entry>
+  
+    <entry>
+      
+
+      <title type="html">Getting Started with MySQL HeatWave on AWS</title>
+      <link href="https://cool.devo.build/tutorials/oci-getting-started-heatwave-aws-v30622" rel="alternate" type="text/html" title="Getting Started with MySQL HeatWave on AWS" />
+      <published>2022-06-16T17:00:00+00:00</published>
+      <updated>2022-06-16T17:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/oci-getting-started-heatwave-aws-v30622</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/oci-getting-started-heatwave-aws-v30622">&lt;p&gt;We live in a multi-cloud world, and that’s why MySQL HeatWave for Amazon Web Service makes so much sense if you need a massively parallel, high performance, in-memory query accelerator for the MySQL Database Service. A combination that accelerates MySQL performance by orders of magnitude for combined analytics and transactional workloads (OLAP and OLTP). The MySQL Database Service is built on MySQL Enterprise Edition, which allows developers to quickly create and deploy secure cloud native applications using the world’s most popular open source database.&lt;/p&gt;
+
+&lt;p&gt;Oracle designed this so developers can focus on the important things, like managing data, creating schemas, and providing highly-available applications. MySQL HeatWave for Amazon Web Services (AWS) is a fully managed service, developed and supported by the MySQL team in Oracle. Oracle automates tasks such as backup, recovery, and database and operating system patching. “Worry less, crunch more,” as we say!&lt;/p&gt;
+
+&lt;p&gt;If you’ve never heard of HeatWave, think of it as a database query accelerator with boost buttons. As in The Fast and the Furious, when you want to pull ahead of the competition, you hit the NO2 and get the speed you need, right when you need it. And of course, this efficiency means it’s a little less expensive to run those big queries. One of the incredible things about Oracle MySQL HeatWave is the ability to &lt;a href=&quot;https://www.oracle.com/mysql/heatwave/&quot;&gt;run analytics&lt;/a&gt; directly against your existing transactional data, so there’s no need to shuffle that data off to a separate system when you need to perform massively parallel analysis.&lt;/p&gt;
+
+&lt;p&gt;To get started, we’ll create a compartment and install MySQL Shell due to its extended capabilities over vanilla MySQL and create a small database so we can eventually connect it to HeatWave for analysis. Note that this is working within Oracle Cloud, but we’ll cover AWS setup in another tutorial to show you how you can leverage HeatWave in a multi-cloud scenario. What a time to be alive!&lt;/p&gt;
+
+&lt;p&gt;Let’s look at how to get started. If you’re already developing in Oracle Cloud (OCI), you’ll find it’s relatively easy to get going, as HeatWave on AWS is integrated with OCI’s Identity and Access Management system. When you sign up for HeatWave on AWS, you’ll be directed to the OCI login page where you must sign in with an OCI Cloud Account. After signing in, you’ll be directed to the OCI Console to complete the MySQL HeatWave on AWS sign-up process. When signing into the HeatWave Console, you are directed to OCI for authentication and then back to the HeatWave Console. To keep things simple, billing is still managed and monitored in OCI.&lt;/p&gt;
+
+&lt;p&gt;Since we’re just getting started, let’s begin truly at the beginning and create a compute instance with the proper access rules and see how to create a HeatWave cluster in OCI. If you’re already using AWS, we’ll cover that in a separate tutorial.&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;PREREQUISITES&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An OCI account and Oracle Cloud Account name&lt;/li&gt;
+  &lt;li&gt;Admin access&lt;/li&gt;
+  &lt;li&gt;A compatible browser (Chrome 69+, Safari 12.1+, or Firefox 62+ or any browser that is Oracle Jet-approved)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;OVERVIEW&lt;/h2&gt;
+
+&lt;p&gt;MySQL HeatWave on AWS uses predefined Oracle Identity Cloud Service (IDCS) groups and policies to control user access to MySQL HeatWave on AWS and the type of access. You should have the ability to create and modify policies, users, and the like. Also, we are assuming you’re creating the database and administering it, or at least getting the prep work done. Look at you, a one-stop shop!&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create a Compartment&lt;/li&gt;
+  &lt;li&gt;Create a a VCN and configure for database access&lt;/li&gt;
+  &lt;li&gt;Create users and groups (if you haven’t already)&lt;/li&gt;
+  &lt;li&gt;Create a Bastion Host compute instance&lt;/li&gt;
+  &lt;li&gt;Connect and Install MySQL Shell&lt;/li&gt;
+  &lt;li&gt;Create a MySQL database&lt;/li&gt;
+  &lt;li&gt;Create a DB System with HeatWave-compatible shape&lt;/li&gt;
+  &lt;li&gt;Activate HeatWave on AWS&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Wondering why this is a “bastion host”? You can read more about bastions in this &lt;a href=&quot;https://www.oracle.com/security/cloud-security/bastion/&quot;&gt;article&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote class=&quot;notice&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Once you’re connecting databases and analytics, there’s a better production method for connecting, and that’s creating a Private Access Channel (OAC), which you can learn all about in the article, &lt;a href=&quot;https://blogs.oracle.com/analytics/post/how-to-create-oac-instances-on-oci-native-using-multiple-stripes-or-instances-of-idcs&quot;&gt;How to create OAC instances on OCI Native using multiple stripes or instances of IDCS&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In our example, we’re using a quick and dirty approach to set things up to use HeatWave.&lt;/p&gt;
+
+&lt;p&gt;Now let’s get started with the basics! We begin by slicing off a piece of the cloud as our own little homestead. There are a couple of ways to do this, but one of the simplest is to create a Compartment (you could also start with a Compute instance). This is a “place for your stuff” within your tenancy and is quite flexible. As you might imagine, we need to create a group of users who can administer our system, and Identity and Access Management (IAM) is where you’ll go to configure this for any compartments you create.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-compartment&quot;&gt;Create a Compartment&lt;/h2&gt;
+
+&lt;p&gt;{% imgx assets/create-compartment-hwaws-devrel0266va.png %}&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Menu:&lt;/strong&gt; Home &amp;gt; Identity &amp;amp; Security &amp;gt; Compartments&lt;/p&gt;
+
+&lt;p&gt;I could have set all of this up in my root compartment, but a new compartment is better way to organize things.&lt;/p&gt;
+
+&lt;p&gt;Creating compartments is a simple matter, and a necessary starting point to organize and configure your work. I’ve named mine something clever, like &lt;em&gt;my_heatwave_testing&lt;/em&gt; so I know what it’s for.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-vcn-and-configure-for-database-access&quot;&gt;Create a VCN and configure for database access&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Menu:&lt;/strong&gt; Home &amp;gt; Networking &amp;gt; Virtual Cloud Networks&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create VCN and subnets using &lt;strong&gt;Virtual Cloud Networks &amp;gt; Start VCN Wizard &amp;gt; Create a VCN with Internet Connectivit&lt;/strong&gt;y.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/start_a_vcn_wizard-devrel0622va.png %}&lt;/p&gt;
+
+    &lt;p&gt;The handy wizard will walk you through creating a network interface for your system, although there are lots of ways to configure this, let’s not get distracted. Notice that I chose the compartment I set up earlier, my_heatwave_testing – because that’s important!&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/vcn_config_screen2-devrel0622va.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now let’s configure the VCN’s security list to allow traffic through MySQL Database Service ports.&lt;br /&gt;
+Click on the &lt;strong&gt;Private Subnet&lt;/strong&gt; for the VCN you created, then click the &lt;strong&gt;Security List&lt;/strong&gt; for it.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/vcn_edit_subnet_s1-devrel0622va.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now click &lt;strong&gt;Add Security&lt;/strong&gt; list.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;We’ll add some ingress rules needed to enable the right ports, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3306&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;33060&lt;/code&gt;.&lt;br /&gt;
+Here’s the details:&lt;/p&gt;
+
+        &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;   Source CIDR: 0.0.0.0/0
+
+   Destination Port Range: 3306,33060
+
+   Description: MySQL Port
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;And click &lt;strong&gt;Add Ingress Rules&lt;/strong&gt;.&lt;/p&gt;
+
+        &lt;p&gt;{% imgx assets/vcn_ingress_rules_example-devrel0622va.png %}&lt;/p&gt;
+
+        &lt;p&gt;Looking good so far!&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;create-users-and-groups-if-you-havent-already&quot;&gt;Create users and groups (if you haven’t already)&lt;/h2&gt;
+
+&lt;p&gt;We’ll need to set permissions and limit access somewhat, even in our “quick and dirty” example, but you can &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managinggroups.htm&quot;&gt;read all about managing groups here&lt;/a&gt;. Usually we’ll create a group, create policies, then add users to the group.&lt;/p&gt;
+
+&lt;p&gt;Let’s make friends with the &lt;strong&gt;Identity and Security&lt;/strong&gt; options.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a group for your users.&lt;br /&gt;
+In my example I’ve created a group called database_user (just to be confusing, as I should have named it database_admins, but this was just a clever ploy to keep you on your toes).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add users to the group.&lt;br /&gt;
+In our example, we’ll add ourselves to this group that will administer our compute instance running MySQL-shell.&lt;/p&gt;
+
+    &lt;p&gt;Of course, for a group you’ll first create all the users you need, add those into the group needing access at the levels you determine, and rest assured that you can set them loose with appropriate access controls.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We allow access by setting policies, allowing one group to have full access (admins), and a group with limited access (database users, for example).&lt;/p&gt;
+
+    &lt;p&gt;For MySQL HeatWave on AWS, there are some specific policy statements we can use, detailed in the charts below.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/hw_policy_aws_statements-devrel0622va.png %}&lt;/p&gt;
+
+    &lt;p&gt;This is just making it possible to configure and administrate our compartment, and defines the scope of the access applied to the database instance.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For more on adding users and setting policies in OCI, refer to &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/addingusers.htm#Add&quot;&gt;this documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-bastion-host-compute-instance&quot;&gt;Create a Bastion Host Compute Instance&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;MENU:&lt;/strong&gt; Main &amp;gt; Compute &amp;gt; Instances&lt;/p&gt;
+
+&lt;p&gt;Be sure to select the compartment you set up earlier, under &lt;strong&gt;List Scope&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/compute_hw_listscope_compartment-devrel0622va.png %}&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/create_instance_hw_devrel_0522-0622va.png %}&lt;/p&gt;
+
+&lt;h3 id=&quot;create-instance&quot;&gt;Create Instance&lt;/h3&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Create Instance&lt;/strong&gt; (easy, right?)&lt;/p&gt;
+
+&lt;p&gt;Name it something useful, and right now we’ll leave the Availability Domain, Fault Domain, Image, and Shape as-is. You can use a free-tier compute!&lt;/p&gt;
+
+&lt;p&gt;We’re going to use Oracle Linux, but one of the niceties here are the choices of compute shapes and Linux distributions to choose from. There’s even a developer distro, which comes pre-configured with key frameworks. For our purposes, we’ll want to make sure it’s set up to work with HeatWave. Plus, we’ll use a Bastion Host for better security. Bastions provide “restricted and time-limited access to target resources that don’t have public endpoints,” and you can &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm&quot;&gt;read all about them in this overview article&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/create_compute_hw_devrel0522aa.png %}&lt;/p&gt;
+
+&lt;h4 id=&quot;launching-a-linux-instance&quot;&gt;Launching a Linux instance&lt;/h4&gt;
+
+&lt;p&gt;If you want to know more, &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/launchinginstance.htm&quot;&gt;here’s a tutorial on launching a Linux instance&lt;/a&gt;, but I’ll walk you through the basics now. Bear in mind that our compute instance can be pretty minimal, and there are free tier shapes that could work (&lt;a href=&quot;https://www.oracle.com/cloud/free/&quot;&gt;our always-free tier VM&lt;/a&gt; is quite generous).&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/compute_network_hw_devrel0522aa.png %}&lt;/p&gt;
+
+&lt;h3 id=&quot;networking&quot;&gt;Networking&lt;/h3&gt;
+
+&lt;p&gt;Scrolling down, you’ll see the &lt;strong&gt;Networking&lt;/strong&gt; section. Here you’ll want to make sure to use the &lt;a href=&quot;#create-a-vcn-and-configure-for-database-access&quot;&gt;VCN you created previously&lt;/a&gt;, as well as make sure you’re in the proper compartment.&lt;/p&gt;
+
+&lt;h3 id=&quot;generate-ssh-keys&quot;&gt;Generate SSH keys&lt;/h3&gt;
+
+&lt;p&gt;And of course, during this process you’ll generate SSH keys so you can access your computer instance remotely. You can do this within the Cloud Shell in OCI’s dashboard, or the SSH client of your choice.&lt;/p&gt;
+
+&lt;h4 id=&quot;let-oracle-make-it-easy&quot;&gt;Let Oracle make it easy&lt;/h4&gt;
+
+&lt;p&gt;Also, the path of least resistance for creating a key pair will be letting Oracle generate one. The key pair will allow you to log in remotely and install MySQL-shell, etc.&lt;/p&gt;
+
+&lt;blockquote class=&quot;notice&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; In many labs we’ll have you use the Cloud Shell, which is a convenient command line interface available directly in the OCI dashboard. I’m old school, so I’m just using Terminal on my Mac. You can use the SSH client of your choice, of course!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For more information see:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/node-on-ol/01oci-ol-node-summary.htm#install-node-ol&quot;&gt;Install Node Express on an Oracle Linux Instance&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LMvYOSkXF1k&quot;&gt;A video on working with SSH keys&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;obtain-public-ip-for-compute-instance&quot;&gt;Obtain public IP for compute instance&lt;/h3&gt;
+
+&lt;p&gt;Of course, you’ll need the public IP for your compute instance, which is found in &lt;strong&gt;Compute &amp;gt; Instances &amp;gt; Instance details&lt;/strong&gt;. Under &lt;strong&gt;Instance Access&lt;/strong&gt; you’ll find the public IP and username (opc) you’ll need to connect, with a handy &lt;strong&gt;copy&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/heres-public-ip-hw-oci-fy23-devrel.png %}&lt;/p&gt;
+
+&lt;p&gt;Now, we’ll be able to &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm&quot;&gt;connect via SSH or the Cloud Shell&lt;/a&gt;, and since you have a public IP, you can just ssh in to your compartment and the OCI Linux compute instance.&lt;/p&gt;
+
+&lt;p&gt;As always, keep the private key in a safe place and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chmod 400&lt;/code&gt; the private key to keep it from being modified (and throwing a warning).&lt;/p&gt;
+
+&lt;h3 id=&quot;provision-the-instance&quot;&gt;Provision the Instance&lt;/h3&gt;
+
+&lt;p&gt;Go ahead and click &lt;strong&gt;Create&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;It’ll take a moment for the provisioning to finish up, but when it’s done the large square icon will turn green, meaning all systems are GO!&lt;/p&gt;
+
+&lt;h2 id=&quot;connect-and-install-mysql-shell&quot;&gt;Connect and install MySQL Shell&lt;/h2&gt;
+
+&lt;p&gt;To connect, let’s use the handy Cloud Shell. It’s a little Linux terminal embedded in the OCI dashboard (and it’s adorable).&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the upper-right corner, click the &lt;strong&gt;Cloud Shell&lt;/strong&gt; prompt icon and a command line will open at the bottom of the browser.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/cloudshelliconhwtesting-devrel0622va.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Drag and drop the previously saved private key into the cloud shell, uploading it to your home directory.&lt;/p&gt;
+
+    &lt;p&gt;{% imgx assets/cloudshelluploadprivkey_hwdevrel-devrel0622va.png %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Under Instance Access, you’ll see the public IP address, and the handy &lt;strong&gt;Copy&lt;/strong&gt; button. Copy the public IP.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now let’s ssh in, first protecting the private key file.&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;   chmod 400 &amp;lt;private-key-filename&amp;gt;&lt;/span&gt;.key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Then use your public IP address and username opc:&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;   ssh -i &amp;lt;private-key-file-name&amp;gt;&lt;/span&gt;.key opc@&amp;lt;compute_instance_public_ip&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If asked to accept the fingerprint, type &lt;em&gt;yes&lt;/em&gt; and hit &lt;strong&gt;enter&lt;/strong&gt;.&lt;br /&gt;
+You’ve been added to the list of known hosts, congrats. We’re in! If you see Tron, wave.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now we install MySQL Shell; pretty easy these days. In my case, I used SSH to log into my compute instance (don’t forget you’ll need your private key) and used yum to install what I needed.&lt;/p&gt;
+
+    &lt;p&gt;Install the MySQL Client on the compute instance using the following command:&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo yum install mysql-shell&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once we create our HeatWave-compatible DB System, we’ll connect to to it using the MySQL Client:&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mysqlsh --host &amp;lt;DBSystemEndpointIPAddress&amp;gt; -u &amp;lt;Username&amp;gt; -p&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For more information see:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://dev.mysql.com/doc/mysql-shell/8.0/en/&quot;&gt;Learning about MySQL Shell&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.oracle.com/en-us/iaas/mysql-database/doc/connecting-db-system.html#GUID-70023ABD-5418-4C1F-975F-F3E2ABC0F93E&quot;&gt;Learning about connecting database systems&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;create-a-db-system&quot;&gt;Create a DB System&lt;/h2&gt;
+
+&lt;p&gt;Remember a little while ago when we mentioned the endpoint for your DB System? Let’s set that up now.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;MENU:&lt;/strong&gt; Menu &amp;gt; Databases &amp;gt; DB Systems&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/createdbsys_warn_devrel_0522va.png %}&lt;/p&gt;
+
+&lt;blockquote class=&quot;notice&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Notice that the system warns you if you haven’t already set up users, a VCN, and so on. That’s nice.&lt;br /&gt;
+Also, don’t forget to check which compartment you’ll create this in, again under &lt;strong&gt;List Scope&lt;/strong&gt; on the left.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click &lt;strong&gt;Create DB System&lt;/strong&gt;.&lt;/p&gt;
+
+    &lt;p&gt;Double-check the compartment, give it a name, and select HeatWave (of course).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You’ll create admin credentials.&lt;br /&gt;
+Be sure to save those somewhere handy but safe!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;In &lt;strong&gt;Configure Networking&lt;/strong&gt;, you’ll use the compute instance created earlier, but we’ll use the private subnet. Leave the default domain.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Go to &lt;strong&gt;Configure Hardware&lt;/strong&gt;.&lt;/p&gt;
+
+    &lt;p&gt;Confirm that in the &lt;strong&gt;Configure Hardware&lt;/strong&gt; section, the selected shape is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MySQL.HeatWave.VM.Standard.E3&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;p&gt;Also, confirm that:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;CPU Core Count: 16,&lt;/li&gt;
+      &lt;li&gt;Memory Size: 512 GB,&lt;/li&gt;
+      &lt;li&gt;Data Storage Size: 1024&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the &lt;strong&gt;Configure Backup&lt;/strong&gt; section you may leave the default backup window of 7 days.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Keep scrolling and click &lt;strong&gt;Show Advanced Options&lt;/strong&gt;.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;Go to the &lt;strong&gt;Networking&lt;/strong&gt; tab.&lt;br /&gt;
+In the &lt;strong&gt;Hostname&lt;/strong&gt; field, enter the exact name of your DB System.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Make sure port configuration corresponds to the following:&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;MySQL Port: 3306&lt;/li&gt;
+          &lt;li&gt;MySQL X Protocol Port: 33060&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;And… click &lt;strong&gt;Create&lt;/strong&gt;!&lt;/p&gt;
+
+    &lt;p&gt;This time a yellow hexagon will appear, and eventually it’ll turn green and your DB System will be up and running. Make some tea or grab some water, you’ve done a lot.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;create-a-mysql-database&quot;&gt;Create a MySQL database&lt;/h2&gt;
+
+&lt;p&gt;Now, you’ll want to create your database and import any data you need. HeatWave is really designed for big data sets needing fast analysis, so even though I’m importing the tiniest database ever, you can load up as much as you like (provided you have the storage for it). Plus, queries can be run in the cluster without offloading to a separate database. Whether you’re deploying to OCI or AWS, we got you.&lt;/p&gt;
+
+&lt;p&gt;Finally, the fun part! Import a .sql file.&lt;/p&gt;
+
+&lt;h3 id=&quot;from-the-command-line&quot;&gt;From the command line&lt;/h3&gt;
+
+&lt;p&gt;Type: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mysql -u username -p database_name &amp;lt; file.sql&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Where:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username&lt;/code&gt; refers to your MySQL username.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;database_name&lt;/code&gt; refers to the database you want to import.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file.sql&lt;/code&gt; is your file name.&lt;/li&gt;
+  &lt;li&gt;If you’ve assigned a password, type it now and press &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more information:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=gvcBDA2wJJ4&quot;&gt;Here’s a video on importing using the command line&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;using-mysqldump&quot;&gt;Using mysqldump&lt;/h3&gt;
+
+&lt;p&gt;Lots of fans of mysqldump out there, so here’s how that works (using a made-up database for magazines):&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;To import a .sql file with mysqldump, use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mysqlimport&lt;/code&gt; command with the following flags and syntax:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ mysqlimport -u magazine_admin -p magazines_production ~/backup/database/magazines.sql&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-u&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-p&lt;/code&gt; are needed for authentication, and is then followed by the name of the database you want to import into.&lt;/li&gt;
+      &lt;li&gt;You’ll need to specify the path to your SQL dump file that will contain your import data: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/backup/database/magazines.sql&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;You won’t need to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt; for importing, but you will need them for exporting in the next guide.&lt;/li&gt;
+      &lt;li&gt;This will prompt a password request.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Your file will be automatically imported.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now that we have some data, we probably want to DO stuff with it, including visualize it in various ways. Let’s add some analytics to accomplish this – and continue our journey to the really big show, HeatWave. This is where things get really interesting, and you can see how Oracle has created a vast menu of options for your data needs.&lt;/p&gt;
+
+&lt;p&gt;The key is that you have a database running on OCI, and that database now has an endpoint which we can connect to HeatWave for analytics.&lt;/p&gt;
+
+&lt;h2 id=&quot;activate-heatwave-on-aws&quot;&gt;Activate HeatWave on AWS&lt;/h2&gt;
+
+&lt;p&gt;Remember the DB System we just created? Now we can activate MySQL HeatWave in AWS and connect our DB System to a HeatWave Cluster to run queries on!&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;You’ll go to &lt;a href=&quot;http://cloud.mysql.com/&quot;&gt;http://cloud.mysql.com/&lt;/a&gt;, where you’ll see the welcome page.&lt;br /&gt;
+Enter your Oracle Cloud Account name and click &lt;strong&gt;Continue&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click &lt;strong&gt;Enable MySQL HeatWave on AWS&lt;/strong&gt;.&lt;br /&gt;
+This takes you to a Admin page where you will go through a brief setup process. You may have to upgrade your account to paid with a credit card, and once complete, you’ll go to the OCI Console. Try not to time this for the last minute, as provisioning may take a moment.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;From the OCI Console navigation menu, select &lt;strong&gt;Databases&lt;/strong&gt;.&lt;/p&gt;
+
+    &lt;p&gt;MySQL HeatWave on AWS appears on the Home tab under the Featured label.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Under &lt;strong&gt;MySQL HeatWave on AWS&lt;/strong&gt;, click &lt;strong&gt;Administration&lt;/strong&gt;, and you’ll go back to the setup.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now click &lt;strong&gt;Provision&lt;/strong&gt; to (of course) provision MySQL on AWS. 
+After the provisioning operation is completed, a message appears stating that MySQL HeatWave on AWS is ready and you are presented with options to open the MySQL HeatWave console, set up users, and view billing information.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;summary---so-far&quot;&gt;Summary - so far&lt;/h2&gt;
+
+&lt;p&gt;What we’ve done so far, all on OCI, is set up a Virtual Cloud Network with ports for MySQL use, created a Bastion Compute instance, then set up a MySQL database, and now we have an endpoint for our HeatWave on AWS instance, and HeatWave should be provisioned on AWS.&lt;/p&gt;
+
+&lt;p&gt;Want to know more? Join the discussion in our &lt;a href=&quot;https://bit.ly/devrel_slack&quot;&gt;public Slack channel&lt;/a&gt;!&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Victor Agreda</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="cloudapps" />
+        
+      
+
+      
+        <category term="mysql" />
+      
+        <category term="database" />
+      
+        <category term="heatwave" />
+      
+        <category term="aws" />
+      
+      <summary type="html">Getting your OCI tenancy ready to connect to MySQL HeatWave on AWS. We will create a compute instance, DB System, and endpoint. We also began to provision MySQL HeatWave on AWS.</summary>
+
+      
+      
+    </entry>
+  
+    <entry>
+      
+
+      <title type="html">Creating a Simple Chatbot using NodeJS on OCI</title>
+      <link href="https://cool.devo.build/tutorials/create-simple-chatbot-nodejs-oci" rel="alternate" type="text/html" title="Creating a Simple Chatbot using NodeJS on OCI" />
+      <published>2022-05-26T19:42:00+00:00</published>
+      <updated>2022-05-26T19:42:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/create-simple-chatbot-nodejs-oci</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/create-simple-chatbot-nodejs-oci">&lt;h2 id=&quot;introduction-why-this&quot;&gt;Introduction: Why this?&lt;/h2&gt;
+
+&lt;picture class=&quot;&quot;&gt;
+                &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/racterexaemplasdfsdfsdf.jpg 1x&quot; /&gt;
+                &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/racterexaemplasdfsdfsdf.jpg&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/racterexaemplasdfsdfsdf.jpg&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/racterexaemplasdfsdfsdf@2x.jpg&quot; /&gt;
+            &lt;/picture&gt;
+
+&lt;p&gt;When I started this project I wanted to make a Racter-like chatbot. For those who don’t remember, Racter was a weird little text “conversation simulator” released in the 1980s by publisher Mindscape, known for educational software. I wound up playing quite a bit on my dad’s Apple //c instead of my computer because his had a printer, and you could print out conversations – presumably to share them with friends. A literal “share sheet,” if you will.&lt;/p&gt;
+
+&lt;picture class=&quot;&quot;&gt;
+                &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/apple2cvhanodejsasdfsd.jpg 1x&quot; /&gt;
+                &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/apple2cvhanodejsasdfsd.jpg&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/apple2cvhanodejsasdfsd.jpg&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/apple2cvhanodejsasdfsd@2x.jpg&quot; /&gt;
+            &lt;/picture&gt;
+
+&lt;p&gt;However, what I wound up doing is establishing the beginnings of a home assistant. Racter is pretty outdated tech, as it just takes nouns you say and adds them into sentences. Very much like Mad Libs, but weirder. You can actually &lt;a href=&quot;https://www.myabandonware.com/game/racter-4m/play-4m&quot;&gt;try out Racter on the Abandonware site&lt;/a&gt;. Let’s face it, home assistants are much more conversational and practical these days.&lt;/p&gt;
+
+&lt;p&gt;I have a mix of IOT devices in my home, but have lately become a fan of open source projects that integrate the disparate platforms (Amazon, Apple, and Google, primarily) and increase privacy. To start, I looked around for some existing “chatbots” and found &lt;a href=&quot;https://github.com/Programmer101N/chatbot_nodejs&quot;&gt;this clever implementation&lt;/a&gt; by &lt;a href=&quot;https://github.com/Programmer101N&quot;&gt;Naman Baranwall&lt;/a&gt;, which uses a little bit of training to choose the best response. Obviously we’ll be adding to this later, but for now, I wanted to show how to get this up and running on Oracle Cloud Infrastructure (OCI). It was honestly a lot easier than I thought it would be! But note that we’re going for the shortest distance between two points, and that’s getting the application running using NodeJS. If this were a production environment, we’d likely use bastions and some stricter access controls. All in good time!&lt;/p&gt;
+
+&lt;h2 id=&quot;pre-requisites&quot;&gt;Pre-Requisites&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OCI Free Tier account&lt;/li&gt;
+  &lt;li&gt;Wait, that’s it???&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You may want a GitHub account if you want to branch the project as I did for extension later, but honestly this is all so simple you’ll be amazed.&lt;/p&gt;
+
+&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a compartment&lt;/p&gt;
+
+    &lt;p&gt;Menu: Identity and Security &amp;gt; Instances&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2instancesinmycompartment.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2instancesinmycompartment.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2instancesinmycompartment.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2instancesinmycompartment@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+
+    &lt;p&gt;The point is that we’re not messing about in our root compartment, just as we like to avoid mucking about in root on our personal machine, right? I created a very simple compartment and just made the parent my root, but I also used this for my Virtual Cloud Network (VCN) so I can connect later. Identity and Security is also where you would create users, groups, and all manner of access controls. But, it’s just little ol’ us, so we’ll just go in as admins.&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2createinstanceinmycompartment.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2createinstanceinmycompartment.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2createinstanceinmycompartment.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2createinstanceinmycompartment@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2createcompartmentchatbotnodejs.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2createcompartmentchatbotnodejs.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2createcompartmentchatbotnodejs.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2createcompartmentchatbotnodejs@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a VCN if you don’t have one&lt;/p&gt;
+
+    &lt;p&gt;Menu: Networking &amp;gt; Virtual Cloud Networks&lt;/p&gt;
+
+    &lt;p&gt;This is where my advance prep of a compartment came in handy, as I’d already set up a VCN using default route tables and it has a public IP so I can &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh&lt;/code&gt; in later. VCN’s are really powerful, but for our purposes all we need is a subnet and a public IP to steer to, all of which is easy to set up using the tool provided. Of course, almost all of these things can be automated using something like Terraform, but we’re just testing a chatbot for ourselves today.&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/vcnsinmycompartmentnodejsproj.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/vcnsinmycompartmentnodejsproj.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/vcnsinmycompartmentnodejsproj.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/vcnsinmycompartmentnodejsproj@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a compute instance&lt;/p&gt;
+
+    &lt;p&gt;Menu: Compute &amp;gt; Instances&lt;/p&gt;
+
+    &lt;p&gt;Here’s where things get streamlined. Oracle does a good job of choosing a general purpose shape, but we’re going to adjust it so it’s free-tier and connecting to the Internet.&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/createcomputeinstancechatbotproj.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/createcomputeinstancechatbotproj.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/createcomputeinstancechatbotproj.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/createcomputeinstancechatbotproj@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+
+    &lt;p&gt;Instead of AMD, we’ll go with Ampere, an exceptionally good value (free-tier, remember?) just click on change shape…&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2amdchangeshapeinocicompute.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2amdchangeshapeinocicompute.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2amdchangeshapeinocicompute.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2amdchangeshapeinocicompute@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+
+    &lt;p&gt;Also, don’t forget to change the memory to 8GB&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2amperealwaysfreecomputeshapetouse.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2amperealwaysfreecomputeshapetouse.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2amperealwaysfreecomputeshapetouse.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2amperealwaysfreecomputeshapetouse@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+
+    &lt;p&gt;As you scroll down, you’ll see that our previous VCN is available, how handy! That means we can assign a public IP to this fellow and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh&lt;/code&gt; in shortly.&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2computewizardnetworkingpart.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2computewizardnetworkingpart.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2computewizardnetworkingpart.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2computewizardnetworkingpart@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+
+    &lt;p&gt;And to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh&lt;/code&gt; in, we’ll need the private key, which I just generate right here while I’m spinning up my compute, and of course save it and the public key somewhere safe (more on this in a bit).&lt;/p&gt;
+
+    &lt;p&gt;I personally provision 50GB of storage, but you don’t have to as OCI will provision some block memory to start with.&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2privpubkeysandstorage 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2privpubkeysandstorage&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2privpubkeysandstorage&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2privpubkeysandstorage&quot; /&gt;
+        &lt;/picture&gt;
+
+    &lt;p&gt;&lt;em&gt;NOTE: You can save these as a stack for later use as well, which is also handy.&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;To review, we’ve just taken 3 steps to spin up a publicly-available free-tier compute instance so we can start creating our dev environment and chances are you haven’t even finished that beverage sitting too close to your keyboard!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Connecting to our compute instance&lt;/p&gt;
+
+    &lt;p&gt;It’ll take a minute for the compute instance to spin up, but when it does, the panel will show you the public IP, which you’ll need to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh&lt;/code&gt; in.&lt;/p&gt;
+
+    &lt;p&gt;Menu: Compute &amp;gt; Instances &amp;gt; Instance Details&lt;/p&gt;
+
+    &lt;p&gt;There’s even a handy copy link!&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2computepubipexampleco.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2computepubipexampleco.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2computepubipexampleco.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/2computepubipexampleco@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+
+    &lt;p&gt;I’m using Terminal on my Mac, so I &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd&lt;/code&gt; over to where I’m storing my private key, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chmod 400&lt;/code&gt; it, then:&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;ssh -i &amp;lt;path to private key&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;opc@&amp;lt;public IP address&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;And of course, when prompted by security, you want to continue connecting, which will add you to the list of known hosts and you’re off to the races!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Installing what we need&lt;/p&gt;
+
+    &lt;p&gt;As we’re using nodejs, we’ll want to install it and then create a folder for our project, then initialize a repo in that folder to install our modules. We’ll also set up some text files with code and parameters.&lt;/p&gt;
+
+    &lt;p&gt;Oracle has a nifty &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yum&lt;/code&gt; repo for NodeJS and all we need to do is install the latest NodeJS using this command:&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo yum install nodejs
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Navigate to your home folder, and then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;opc&lt;/code&gt; (the admin user for this VM), and create a folder for your project. Like the tutorial, I named mine &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chatbot_nodejs&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;p&gt;I branched the repo beforehand so I could extend it a bit later, but either way we initialize it in that folder with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm init&lt;/code&gt; and use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm i node-nlp&lt;/code&gt; to install the appropriate modules.&lt;/p&gt;
+
+    &lt;p&gt;Note that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; file will look for an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.js&lt;/code&gt; file, and we add two scripts: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;train.js&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.js&lt;/code&gt;, plus the repo for our dependencies.&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/packagejsonfileshownchatbot.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/packagejsonfileshownchatbot.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/packagejsonfileshownchatbot.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/packagejsonfileshownchatbot@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Writing and testing&lt;/p&gt;
+
+    &lt;p&gt;The way all of this works is by storing a set of “intents” as questions and responses, then using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node-nlp&lt;/code&gt; module to weigh responses over time.&lt;/p&gt;
+
+    &lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;train.js&lt;/code&gt; file is where we have the code to actually teach our model. We also create an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.js&lt;/code&gt; file, which will get everything loaded and set up – it’s pretty simple right now, but has the capacity to extend itself to a more conversant home assistant in the future.&lt;/p&gt;
+
+    &lt;p&gt;As you can see in &lt;a href=&quot;https://medium.com/geekculture/create-chatbot-with-nodejs-cf3d8bc3f302&quot;&gt;the article&lt;/a&gt;, we import the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NlpManager&lt;/code&gt; from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node-nlp&lt;/code&gt; so we can save and process what goes on, then create a new instance of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NlpManager&lt;/code&gt; class, read input from the terminal, send it to the manager for a response, and then display that response.&lt;/p&gt;
+
+    &lt;p&gt;Nothing too fancy just yet, but we’re laying some important groundwork. The term “intent” here is very specific, referring to the natural language processing (NLP) we’re using to train our system. This can be used in many ways, from knowing preferences to avoiding specific words to understanding what a person is saying better over time. Just like it reads, “intent” is what the person is trying to say. You can &lt;a href=&quot;https://medium.com/mysuperai/what-is-intent-recognition-and-how-can-i-use-it-9ceb35055c4f&quot;&gt;read more about intent recognition in this excellent piece by Christopher Marshall&lt;/a&gt;.&lt;/p&gt;
+
+    &lt;p&gt;The model needs something to start with, so we create a couple of documents in our intents folder (inside our project folder): one for “hello” and one for “goodbye.” The author creates a set of questions and answers, which can, of course, be as long as you like. I took the liberty of changing a few, including one that calls me “FNAME” as an homage to the days when I would get press releases gone horribly awry on the database side. If you know, you know.&lt;/p&gt;
+
+    &lt;p&gt;You could create many of these to accomodate frequent queries like weather, sports, news, etc., and then create data agents who fetch what you need and return it using phrases that (over time) will be weighed for preference and ultimately “converse” in a more natural way. Integrating live data is something we’d love to do here, but we’ll wait to do this another day.&lt;/p&gt;
+
+    &lt;p&gt;Once I fixed my own minor syntax errors (check those commas, people!), the whole thing worked just as expected. First you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;train&lt;/code&gt; to get the module initialized and ready (you’ll see a bunch of timing to let you know it’s doing the work), then run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;start&lt;/code&gt; to get the chatbot chatting.&lt;/p&gt;
+
+    &lt;picture class=&quot;&quot;&gt;
+            &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/chatbotactuallyworkingnodejs34.png 1x&quot; /&gt;
+            &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/chatbotactuallyworkingnodejs34.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/chatbotactuallyworkingnodejs34.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/chatbotactuallyworkingnodejs34@2x.png&quot; /&gt;
+        &lt;/picture&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;next-steps-iot&quot;&gt;Next Steps: IOT&lt;/h2&gt;
+
+&lt;p&gt;OK, maybe not the very next step, but eventually this could become my own little Siri or Alexa, running in OCI, tied to systems in my house, capable of giving me whatever information I need on request. Sort of like a certain comic book character who came to life on screen not too long ago…&lt;/p&gt;
+
+&lt;p&gt;You can try all this for yourself by setting up a free tier account, and reviewing &lt;a href=&quot;https://medium.com/geekculture/create-chatbot-with-nodejs-cf3d8bc3f302&quot;&gt;the article&lt;/a&gt; for the chatbot code. 
+Join us on our &lt;a href=&quot;https://bit.ly/devrel_slack&quot;&gt;public Slack&lt;/a&gt; if you do some cool stuff with it!&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Victor Agreda</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="frameworks" />
+        
+          <category term="cloudapps" />
+        
+      
+
+      
+        <category term="open-source" />
+      
+        <category term="oci" />
+      
+        <category term="nodejs" />
+      
+      <summary type="html">A very basic chatbot using nodejs on an oracle cloud compute instance.</summary>
+
+      
+      
+    </entry>
+  
+    <entry>
+      
+
+      <title type="html">Get started with Ruby on Rails on Oracle Cloud</title>
+      <link href="https://cool.devo.build/tutorials/get-started-with-rubyonrails" rel="alternate" type="text/html" title="Get started with Ruby on Rails on Oracle Cloud" />
+      <published>2022-04-27T09:00:00+00:00</published>
+      <updated>2022-04-27T09:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/get-started-with-rubyonrails</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/get-started-with-rubyonrails">&lt;picture class=&quot;&quot;&gt;
+                &lt;source srcset=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/rails-logo.png 1x&quot; /&gt;
+                &lt;img loading=&quot;lazy&quot; src=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/rails-logo.png&quot; data-original=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/rails-logo.png&quot; data-at2x=&quot;https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/rails-logo@2x.png&quot; alt=&quot;Ruby on Rails Logo&quot; title=&quot;Ruby on Rails Logo&quot; /&gt;
+            &lt;/picture&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Ruby on Rails is a rapid development framework. It’s used by over a million websites, including Airbnb, Bloomberg, GitHub, GitLab, CouchSurfing, and many more.&lt;/p&gt;
+
+&lt;p&gt;The Ruby language is easy to understand as it’s close to English, making it great for beginners. In this tutorial we’ll show you how to get started with a new Ruby on Rails project and how to bring your existing Ruby on Rails application to Oracle Cloud Infrastructure (OCI).&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-environment-automatically&quot;&gt;Set up environment automatically&lt;/h2&gt;
+
+&lt;p&gt;Don’t have time to read the whole article? Use the “Deploy Button” to provision the Ruby on Rails environment with a few clicks. In this environment you can build a new application or bring your existing Ruby on Rails application to OCI.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloud.oracle.com/resourcemanager/stacks/create?region=home&amp;amp;zipUrl=https://github.com/haj/oci-arch-rubyonrails-mds/archive/refs/tags/latest.zip&quot;&gt;&lt;img src=&quot;https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg&quot; alt=&quot;Deploy to Oracle Cloud&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The button takes you to Oracle Resource Manager which runs Terraform code that will provision the full Ruby on Rails environment.&lt;/p&gt;
+
+&lt;p&gt;The following resources will be created:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;#&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Service Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Additional Info&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Virtual Cloud Network&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Public subnet&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Private subnet&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;VM - Ubuntu&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1 OCPU, 8 Gb Memory 1 OCPU. can be scaled up to 1024 GB Memory and 128 OCPUs&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;MySQL Database Service&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;can be scaled up to run in HA with up to 3 nodes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bastion Host&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;can optionally be replaced with bastion service&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Load balancer 10 mpbs&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;flex loadbalancer upto 4000 mbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The public subnet will contain the following resources:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Load balancer&lt;/li&gt;
+  &lt;li&gt;Bastion Host&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The private subnet will contain the following resources:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ruby on Rails VM(s)&lt;/li&gt;
+  &lt;li&gt;Managed MySQL Database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Software packages installed on the VMs:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RBENV Package manager for ruby to make it easy to manage different ruby versions and gem packs&lt;/li&gt;
+  &lt;li&gt;Node.js&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The bootstrap script in the GitHub repo shows how the VMs are configured and all the packages that are installed:&lt;/p&gt;
+
+&lt;p&gt;You can check out &lt;a href=&quot;https://github.com/haj/oci-arch-rubyonrails-mds/blob/main/scripts/ror_bootstrap.sh&quot;&gt;the script on Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you have deployed the environment using the deploy button, you can skip the next section. The bootstrap script has been run automatically when the VMs were provisioned.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-setup-environment-automatically&quot;&gt;How to setup environment automatically&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click the “Deploy to Oracle” button below.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://cloud.oracle.com/resourcemanager/stacks/create?region=home&amp;amp;zipUrl=https://github.com/haj/oci-arch-rubyonrails-mds/archive/refs/tags/latest.zip&quot;&gt;&lt;img src=&quot;https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg&quot; alt=&quot;Deploy to Oracle Cloud&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If you aren’t already signed in, when prompted, enter the tenancy and user credentials.&lt;/li&gt;
+  &lt;li&gt;Review and accept the terms and conditions.&lt;/li&gt;
+  &lt;li&gt;Select the region where you want to deploy the stack.&lt;/li&gt;
+  &lt;li&gt;Follow the on-screen prompts and instructions to create the stack.&lt;/li&gt;
+  &lt;li&gt;After creating the stack, click &lt;strong&gt;Terraform Actions&lt;/strong&gt;, and select &lt;strong&gt;Plan&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Wait for the job to be completed, and review the plan. To make any changes, return to the Stack Details page, click &lt;strong&gt;Edit Stack&lt;/strong&gt;, and make the required changes. Then, run the &lt;strong&gt;Plan&lt;/strong&gt; action again.&lt;/li&gt;
+  &lt;li&gt;If no further changes are necessary, return to the Stack Details page, click &lt;strong&gt;Terraform Actions&lt;/strong&gt;, and select &lt;strong&gt;Apply&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;how-to-setup-environment-manually&quot;&gt;How to setup environment manually&lt;/h2&gt;
+
+&lt;p&gt;If you prefer to setup the environment manually you need to provision the resources and then install the Ruby on Rails environment.&lt;/p&gt;
+
+&lt;p&gt;Provisioning the VM and MySQL database is not covered in this guide.&lt;/p&gt;
+
+&lt;p&gt;Once you have a VM and MySQL database ready you can proceed to the next step to install Ruby on Rails.&lt;/p&gt;
+
+&lt;h3 id=&quot;minimum-requirements&quot;&gt;Minimum requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VM running Ubuntu 20.04&lt;/li&gt;
+  &lt;li&gt;MySQL Database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-to-install-ruby-on-rails-on-ubuntu-2004-with-rbenv&quot;&gt;How to install Ruby on Rails on Ubuntu 20.04 with rbenv&lt;/h3&gt;
+
+&lt;p&gt;SSH to your VM and run the following commands. Make sure to run the command with a user that has sudo rights. On Ubuntu the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ubuntu&lt;/code&gt; user is usually fine:&lt;/p&gt;
+
+&lt;p&gt;Update apt:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo apt update
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install ruby manager, mysql-client and other dependencies:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo apt-get install -y build-essential git libsqlite3-dev libssl-dev libzlcore-dev mysql-client libmysqlclient-dev git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs npm
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install yarn:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add
+echo &quot;deb https://dl.yarnpkg.com/debian/ stable main&quot; | sudo tee /etc/apt/sources.list.d/yarn.list
+
+sudo apt update
+sudo apt install -y yarn
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install the ruby package manager to help install and manage different ruby versions:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;cd
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;echo 'export PATH=&quot;$&lt;/span&gt;HOME/.rbenv/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;' &amp;gt;&amp;gt; ~/.bash_profile
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;echo 'eval &quot;$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;(rbenv init - bash)&quot;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' &amp;gt;&amp;gt; ~/.bash_profile
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;source ~/.bash_profile
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;echo 'export PATH=&quot;$&lt;/span&gt;HOME/.rbenv/plugins/ruby-build/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;' &amp;gt;&amp;gt; ~/.bash_profile
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;source ~/.bash_profile
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we are ready to install ruby. If you need a different version, change the version number:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;rbenv install 3.0.1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Check that the correct version of ruby is installed:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;ruby -v
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Use version 3.0.1 and make it default:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;rbenv global 3.0.1
+rbenv local 3.0.1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Reload the environment variables to ensure the correct ruby binaries are run:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;source ~/.bash_profile
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s install Rails framework and bundler gem:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;gem install rails
+gem install bundler
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Congratulations, you have now installed Ruby on Rails on your VM!&lt;/p&gt;
+
+&lt;h2 id=&quot;create-your-ruby-on-rails-application&quot;&gt;Create your Ruby on Rails application&lt;/h2&gt;
+
+&lt;p&gt;In this section we will create a rails application using the built-in scaffolding methods of rails. We will connect the rails app to the database provisioned.&lt;/p&gt;
+
+&lt;p&gt;Let’s create a directory where our app will reside and make the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ubuntu&lt;/code&gt; user the owner of the directory:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo mkdir /opt/apps
+sudo chown ubuntu:ubuntu /opt/apps
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create a new app that is preconfigured with a mysql adapter:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;cd /opt/apps
+rails new myapp -d mysql
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Open up port 8080 for incoming HTTP requests:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 8080 -j ACCEPT
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt;SAVE STATE
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Edit the database config file and add your MySQL username and MySQL database name and MySQL host URL:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;nano /opt/apps/myapp/config/database.yml
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create a database schema. If you have already created a database schema you can skip this:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;rake db:create
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run all migration scripts to create the tables in the DB. This step needs to run every time you makes change to table definitions:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;rake db:migrate
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Start the rails server as a background process, listen on port 8080, bind all interfaces, and send log output to startup.log:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;rails s -p 8080 -b 0.0.0.0 &amp;gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; ./log/startup.log &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;accessing-the-application&quot;&gt;Accessing the application&lt;/h3&gt;
+
+&lt;p&gt;If you configured your VM manually you should now be able to access your new rails application at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://my-vm-public.ip:8080&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you provisioned your environment automatically using the “Deploy Button” you can access the application through the load balancer, e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://my-load-balancer-ip&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Check Oracle Resource Manager output for the IP or check the load balancer page.&lt;/p&gt;
+
+&lt;p&gt;The load balancer is configured to listen on port 80 and forwards all traffic to the VM where the Ruby on Rails application is running.&lt;/p&gt;
+
+&lt;p&gt;The load balancer will forward traffic to all the VMs if you provisioned more than one VM.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A new Rails App is created in the directory &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/apps/myapp&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;A database schema is created on the MySQL server.
+    &lt;ul&gt;
+      &lt;li&gt;Database schema name: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;myapp&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The app is configured to connect to the database. Configuration can be found in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/apps/app/config/database.yml&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-to-deploy-your-existing-application&quot;&gt;How to deploy your existing application&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Before deleting the app we will take a backup of the database.yml file. We’ll need it later.&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt; cp /opt/apps/myapp/config/database.yml /opt/apps/bck_database.yml
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Delete the existing vanilla Ruby on Rails app created in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/apps/myapp&lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt; rm -rf /opt/apps/myapp
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy your application to the server using scp&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt; scp myapp.zip ubuntu@server-ip:/opt/apps/
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Unpack the application&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt; unzip myapp.zip ./myapp/
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy the generated database config file&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt; cp /opt/apps/bck_database.yml ./myapp/config/database.yml
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Or edit the existing database config file (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;database.yml&lt;/code&gt;)&lt;/p&gt;
+
+    &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+ &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+ &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Migrate your data to the MySQL Database&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install dependencies&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt; bundle install
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Run Rails migrations&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt; rake db:migrate 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Start the server&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt; rails s -b 0.0.0.0 -p 8080
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;how-to-change-ruby-version&quot;&gt;How to change Ruby version&lt;/h2&gt;
+
+&lt;p&gt;The default ruby version installed is 3.0.1. If you need a different ruby version simply run:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;rbenv install 3.0.2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can see available Ruby version by running:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;rbenv install list 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Hassan Ajan</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="frameworks" />
+        
+          <category term="cloudapps" />
+        
+      
+
+      
+        <category term="ruby" />
+      
+        <category term="rails" />
+      
+        <category term="MySQL" />
+      
+        <category term="RubyOnRails" />
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      
+
+      <title type="html">Deploying a Custom Nodejs Web Application Integrated with Identity Cloud Service for Unique Single Sign On UX</title>
+      <link href="https://cool.devo.build/tutorials/oke-nodejs-webapp-sso-ex" rel="alternate" type="text/html" title="Deploying a Custom Nodejs Web Application Integrated with Identity Cloud Service for Unique Single Sign On UX" />
+      <published>2022-03-10T08:42:00+00:00</published>
+      <updated>2022-03-10T08:42:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/oke-nodejs-webapp-sso-ex</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/oke-nodejs-webapp-sso-ex">&lt;p&gt;In this post we are deploying a custom Node.js web application in the Oracle Kubernetes Engine (OKE).&lt;/p&gt;
+
+&lt;p&gt;We want to show how to configure the custom web application so we have a unique Single Sign On user experience.&lt;/p&gt;
+
+&lt;h2 id=&quot;first-part&quot;&gt;First part&lt;/h2&gt;
+
+&lt;p&gt;Follow this tutorial &lt;a href=&quot;https://www.oracle.com/webfolder/technetwork/tutorials/obe/cloud/idcs/idcs_nodejs_sdk_obe/idcs-nodejs-sdk.html&quot;&gt;here&lt;/a&gt; explaining how to enable SSO in the web app running locally.&lt;/p&gt;
+
+&lt;h2 id=&quot;second-part&quot;&gt;Second part&lt;/h2&gt;
+
+&lt;p&gt;Next we make some small changes to deploy on Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;Create a Dockerfile in the nodejs folder of the cloned project with the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;FROM oraclelinux:7-slim
+WORKDIR /app
+ADD . /app
+RUN curl --silent --location https://rpm.nodesource.com/setup_11.x | bash -
+RUN yum -y install nodejs npm --skip-broken
+EXPOSE 3000
+CMD [&quot;npm&quot;,&quot;start&quot;]
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create a K8s deployment file as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Service&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;idcsnodeapp&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;LoadBalancer&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;idcsnodeapp&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;client&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;protocol&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;TCP&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Deploy to k8s:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;kubectl apply -f service.yaml
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Grab the url of the new external load-balancer service created in K8s and modify the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;auth.js&lt;/code&gt; with the appropriate values in your cloud environment:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;var ids = {
+oracle: {
+&quot;ClientId&quot;: &quot;**client id of the IdCS app**&quot;,
+&quot;ClientSecret&quot;: &quot;**client secret of the IdCS app**&quot;,
+&quot;ClientTenant&quot;: &quot;**tenant id (idcs-xxxxxxxxxxxx)**&quot;,
+&quot;IDCSHost&quot;: &quot;https://**tenantid**.identity.oraclecloud.com&quot;,
+&quot;AudienceServiceUrl&quot; : &quot;https://**tenantid**.identity.oraclecloud.com&quot;,
+&quot;TokenIssuer&quot;: &quot;https://identity.oraclecloud.com/&quot;,
+&quot;scope&quot;: &quot;urn:opc:idm:t.user.me openid&quot;,
+&quot;logoutSufix&quot;: &quot;/oauth2/v1/userlogout&quot;,
+&quot;redirectURL&quot;: &quot;http://**k8sloadbalancerip**:3000/callback&quot;,
+&quot;LogLevel&quot;:&quot;warn&quot;,
+&quot;ConsoleLog&quot;:&quot;True&quot;
+}
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;};&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Build the container and push to a repo you have write access to, such as:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;docker build -t javiermugueta/idcsnodeapp .
+docker push javiermugueta/idcsnodeapp
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Modify the IdCS application with the public IP of the k8s load-balancer service:&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/okenodejavierimagaidcssso.png %}&lt;/p&gt;
+
+&lt;p&gt;Create a k8s deployment file as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apps/v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Deployment&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;idcsnodeapp&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;idcsnodeapp&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;matchLabels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;idcsnodeapp&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Recreate&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;idcsnodeapp&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;containers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;javiermugueta/idcsnodeapp&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;idcsnodeapp&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3000&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;idcsnodeapp&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Deploy to K8s:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;kubectl apply -f  deployment.yaml
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Test the app and verify SSO is working:&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/okejavierslideshowpartidcssso1.png %}&lt;/p&gt;
+
+&lt;p&gt;Hope this helps! 🙂&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Javier Mugueta</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="frameworks" />
+        
+          <category term="cloudapps" />
+        
+      
+
+      
+        <category term="open-source" />
+      
+        <category term="oci" />
+      
+        <category term="always-free" />
+      
+        <category term="nodejs" />
+      
+        <category term="javascript" />
+      
+      <summary type="html">How to configure custom Node.js web application to have a unique Single Sign On user experience.</summary>
+
+      
+      
+    </entry>
+  
+    <entry>
+      
+
+      <title type="html">Tracing A Node.js with OCI Application Performance Monitoring and Zipkin</title>
+      <link href="https://cool.devo.build/tutorials/tracing-node-js-micro-service-oci" rel="alternate" type="text/html" title="Tracing A Node.js with OCI Application Performance Monitoring and Zipkin" />
+      <published>2022-02-25T19:42:00+00:00</published>
+      <updated>2022-02-25T19:42:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/tracing-node-js-micro-service-oci</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/tracing-node-js-micro-service-oci">&lt;p&gt;OCI Application Performance Monitoring (APM) provides a comprehensive set of features to monitor applications and diagnose performance issues.&lt;/p&gt;
+
+&lt;p&gt;Application Performance Monitoring integrates with open-source tracing system tools (open-source tracers) such as Jaeger and &lt;strong&gt;&lt;a href=&quot;https://zipkin.io&quot;&gt;Zipkin&lt;/a&gt;&lt;/strong&gt; and enables you to upload trace data. It also supports context propagation between Application Performance Monitoring agents and open-source tracers.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-1-configure-apm&quot;&gt;STEP 1: Configure APM&lt;/h2&gt;
+
+&lt;p&gt;Go to APM-&amp;gt;Administration, click in [Create APM Domain] button and provide the information requested in popup window.&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociapmzipkinimage-92.jpg %}&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociapmzipkinimage-93.jpg %}&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociapmzipkinimage-94.jpg %}&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-grab-domain-details&quot;&gt;STEP 2: Grab domain details&lt;/h2&gt;
+
+&lt;p&gt;In the APM domain details you created, get the &lt;strong&gt;[Data Upload Endpoint]&lt;/strong&gt; URL and the &lt;strong&gt;auto_generated_public_datakey&lt;/strong&gt; values, we’ll need them in step 3.&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociapmzipkinimage-95.jpg %}&lt;/p&gt;
+
+&lt;h2 id=&quot;step-3-configure-your-nodejs-app&quot;&gt;STEP 3: Configure your Node.js app&lt;/h2&gt;
+
+&lt;p&gt;Follow the steps &lt;a href=&quot;https://github.com/openzipkin/zipkin-js&quot;&gt;here&lt;/a&gt; to configure Zipkin in your app. &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html&quot;&gt;Here’s the doc&lt;/a&gt; from OCI APM with detailled instructions for the OCI part.&lt;/p&gt;
+
+&lt;p&gt;If you want to use an example, use &lt;a href=&quot;https://github.com/openzipkin/zipkin-js-example&quot;&gt;this&lt;/a&gt;, as it’s the code we’re going to use for this post. Clone the repo and edit file web/recorder.js according to the instructions below (note the changes we’ll make):&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociapmzipkinimage-96.jpg %}&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;/* eslint-env browser */
+const {
+  BatchRecorder,
+  jsonEncoder: {JSON_V2}
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;} = require('zipkin');&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;const {HttpLogger} = require('zipkin-transport-http');&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Replace the last line with:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;const CLSContext = require('zipkin-context-cls');&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We continue with:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;const debug = 'undefined' !== typeof window
+  ? window.location.search.indexOf('debug') !== -1
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;  : process.env.DEBUG;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Of course, the BaseURL will not be a localhost, so remove the line below the comment here:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;// Send spans to Zipkin asynchronously over HTTP
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;const zipkinBaseUrl = 'http://localhost:9411';&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;
+// data upload endpoint example is something like https://aaaa...aaapi.apm-agt.eu-frankfurt-1.oci.oraclecloud.com/20200101/observations/public-span?dataFormat=zipkin&amp;amp;dataFormatVersion=2&amp;amp;dataKey=QM...3D
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And replace &lt;strong&gt;const zipkinBaseUrl = ‘http://localhost:9411;’&lt;/strong&gt; with:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;const httpLogger = new HttpLogger({
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;  endpoint: '&amp;lt;domain data upload endpoint in step 2&amp;gt;&lt;/span&gt;/20200101/observations/public-span?dataFormat&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;zipkin&amp;amp;dataFormatVersion&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2&amp;amp;dataKey&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;public data key &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;step 2&amp;gt;&lt;span class=&quot;s1&quot;&gt;',
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;  jsonEncoder: JSON_V2
+})
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we’ll remove this logger and add a tracer. First remove this:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;const httpLogger = new HttpLogger({
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;  endpoint: `$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;zipkinBaseUrl&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/v2/spans&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;,
+&lt;span class=&quot;go&quot;&gt;  jsonEncoder: JSON_V2
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;});&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And add this:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;// Setup the tracer
+const tracer = new Tracer({
+  ctxImpl: new CLSContext('zipkin'), // implicit in-process context
+  recorder: new BatchRecorder({
+    logger: httpLogger
+  }), // batched http recorder
+  localServiceName: 'mytest', // name of this application
+  supportsJoin: false //Span join disable setting
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;});&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The rest should look like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;function recorder(serviceName) {
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;  return debug ? debugRecorder(serviceName) : new BatchRecorder({logger: httpLogger});&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;}
+
+function debugRecorder(serviceName) {
+  // This is a hack that lets you see the data sent to Zipkin!
+  const logger = {
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;    logSpan: (span) =&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;      const json = JSON_V2.encode(span);&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;      console.log(`$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;serviceName&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; reporting: &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;      httpLogger.logSpan(span);&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;    }
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;  };&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;  const batchRecorder = new BatchRecorder({logger});&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;
+  // This is a hack that lets you see which annotations become which spans
+  return ({
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;    record: (rec) =&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;      const {spanId, traceId} = rec.traceId;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;      console.log(`$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;serviceName&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; recording: &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;traceId&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;spanId&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.annotation.toString()&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;      batchRecorder.record(rec);&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;    }
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;  });&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;}
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;module.exports.recorder = recorder;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-4-restart-your-node-app&quot;&gt;STEP 4: Restart your node app&lt;/h2&gt;
+
+&lt;p&gt;{% imgx assets/ociapmzipkinimage-97.jpg %}&lt;/p&gt;
+
+&lt;h2 id=&quot;step-5-apm-trace-explorer-time&quot;&gt;STEP 5: APM TRACE EXPLORER TIME!&lt;/h2&gt;
+
+&lt;p&gt;Go to APM Trace explorer and run a query&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociapmzipkinimage-98.jpg %}&lt;/p&gt;
+
+&lt;p&gt;Traces can be observed in the list!&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociapmzipkinimage-91.jpg %}&lt;/p&gt;
+
+&lt;p&gt;That’s all, hope it helps!! 🙂&lt;/p&gt;
+
+&lt;p&gt;If you’re curious about the goings-on of Oracle Developers in their natural habitat, come join us on our &lt;a href=&quot;https://oracledevrel.slack.com/join/shared_invite/zt-uffjmwh3-ksmv2ii9YxSkc6IpbokL1g#/shared-invite/email&quot;&gt;public Slack channel&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;And don’t forget our &lt;a href=&quot;https://signup.cloud.oracle.com/?language=en&quot;&gt;free tier&lt;/a&gt;, where you can try out what we just discussed.&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Javier Mugueta</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="frameworks" />
+        
+          <category term="cloudapps" />
+        
+      
+
+      
+        <category term="open-source" />
+      
+        <category term="oci" />
+      
+        <category term="nodejs" />
+      
+      <summary type="html">Using Zipkin as an open-source tracking tool with OCI Application Performance Monitoring.</summary>
+
+      
+      
+    </entry>
+  
+    <entry>
+      
+
+      <title type="html">Sending Emails from OCI with Email Delivery Service in Node.js</title>
+      <link href="https://cool.devo.build/tutorials/nodejs-sendmail-oci" rel="alternate" type="text/html" title="Sending Emails from OCI with Email Delivery Service in Node.js" />
+      <published>2022-02-14T19:42:00+00:00</published>
+      <updated>2022-02-14T19:42:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/nodejs-sendmail-oci</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/nodejs-sendmail-oci">&lt;p&gt;Oracle Cloud Infrastructure &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/Content/Email/Concepts/overview.htm&quot;&gt;Email Delivery&lt;/a&gt; is an email sending service that provides a fast and reliable managed solution for sending high-volume emails that need to reach your recipients’ inbox. Email Delivery provides the tools necessary to send application-generated email for mission-critical communications such as receipts, fraud detection alerts, multi-factor identity verification, and password resets.&lt;/p&gt;
+
+&lt;p&gt;Go to a IAM/user and click on [Generate SMTP Credentials] as shown below:&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociemailimage-6.jpg  %}&lt;/p&gt;
+
+&lt;p&gt;Keep the credentials created in a safe place:&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociemailimage-7.jpg %}&lt;/p&gt;
+
+&lt;p&gt;Create an Approved Sender (a real existing email account to put in the from field):&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociemailimage-8.jpg %}&lt;/p&gt;
+
+&lt;p&gt;Grab the connection details:&lt;/p&gt;
+
+&lt;p&gt;{% imgx assets/ociemailimage-9.jpg %}&lt;/p&gt;
+
+&lt;p&gt;Now test the code:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;npm install [nodemailer](https://nodemailer.com/about/)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create a sendmail.js file:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;var nodemailer = require('nodemailer');&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;async function main() {
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;let testAccount = await nodemailer.createTestAccount();&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;let transporter = nodemailer.createTransport({
+  host: &quot;smtp.email.eu-frankfurt-1.oci.oraclecloud.com&quot;,
+  port: 25,
+  secure: false,
+  auth: {
+    user: 'ocid1.user.oc1..aaaaaa...om', 
+    pass: 'BD..._', 
+  },
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;});&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;let info = await transporter.sendMail({
+  from: '&quot;javier...om', 
+  to: &quot;javi...om&quot;, 
+  subject: &quot;ssh access to 10.0.2.94&quot;,
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;  html: &quot;&amp;lt;b&amp;gt;&lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; deltakey &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ProxyCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; deltakey &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; %h:%p &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 22 ocid1.bast...oud.com&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 22 opc@10.0.2.94&amp;lt;/b&amp;gt;&lt;span class=&quot;s2&quot;&gt;&quot;, 
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;});&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;console.log(&quot;Message sent: %s&quot;, info.messageId);&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;console.log(&quot;Preview URL: %s&quot;, nodemailer.getTestMessageUrl(info));&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;}
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;main().catch(console.error);&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Test it:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;node sendmail.js
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;{% imgx assets/ociemailimage-10.jpg %}
+{% imgx assets/ociemailimage-11.jpg %}&lt;/p&gt;
+
+&lt;p&gt;That’s all, hope it helps! 🙂&lt;/p&gt;
+
+&lt;p&gt;If you’re curious about the goings-on of Oracle Developers in their natural habitat, come join us on our &lt;a href=&quot;https://oracledevrel.slack.com/join/shared_invite/zt-uffjmwh3-ksmv2ii9YxSkc6IpbokL1g#/shared-invite/email&quot;&gt;public Slack channel&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;And don’t forget our &lt;a href=&quot;https://signup.cloud.oracle.com/?language=en&quot;&gt;free tier&lt;/a&gt;, where you can try out what we just discussed.&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Javier Mugueta</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="frameworks" />
+        
+          <category term="cloudapps" />
+        
+      
+
+      
+        <category term="open-source" />
+      
+        <category term="oci" />
+      
+        <category term="always-free" />
+      
+        <category term="nodejs" />
+      
+        <category term="javascript" />
+      
+      <summary type="html">Use Oracle Cloud Infrastructure to manage a high-volume email solution for sending out emails to many recipients for critical communications.</summary>
+
+      
+      
+    </entry>
+  
+    <entry>
+      
+
+      <title type="html">Making calls to the Oracle Cloud API using Postman</title>
+      <link href="https://cool.devo.build/tutorials/making-calls-to-oci-api-with-postman" rel="alternate" type="text/html" title="Making calls to the Oracle Cloud API using Postman" />
+      <published>2022-02-03T07:19:00+00:00</published>
+      <updated>2022-02-03T07:19:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/making-calls-to-oci-api-with-postman</id>
+      
+      
+        <content type="html" xml:base="https://cool.devo.build/tutorials/making-calls-to-oci-api-with-postman">&lt;p&gt;{% imgx alignright assets/pexels-adis-bacinovic-7103901.jpg 800 534 “Mail box” %}&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Photo credit: Photo by &lt;a href=&quot;https://www.pexels.com/@adis-bacinovic-29729722?utm_content=attributionCopyText&amp;amp;utm_medium=referral&amp;amp;utm_source=pexels&quot;&gt;Adis Bacinovic&lt;/a&gt; from &lt;a href=&quot;https://www.pexels.com/photo/close-up-shot-of-a-mailbox-7103901/?utm_content=attributionCopyText&amp;amp;utm_medium=referral&amp;amp;utm_source=pexels&quot;&gt;Pexels&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote class=&quot;notice&quot;&gt;
+  &lt;p&gt;This post is the author’s “notes from the field,” a personal exploration of the topic, filled with all of the journey’s pitfalls and little “Aha!” moments. It’s not meant to be a tutorial, but to illustrate the patterns and troubleshooting mindset it sometimes takes to successfully run a thing. Follow along and enjoy.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Often when I’m building an automated solution, I’ll look at the &lt;a href=&quot;https://registry.terraform.io/providers/hashicorp/oci/latest/docs&quot;&gt;documentation for the OCI Terraform Provider&lt;/a&gt;. Terraform is my typical go-to tool these days for automating OCI infrastructure, so it’s a logical place to start. Thankfully, the OCI Terraform Provider does a good job of sticking pretty close to the OCI API, so much of the terminology will be the same between the two. Sometimes, though, the Terraform documentation doesn’t have all of the details I need and I have to go a level deeper. This is the point where I typically dive into the &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/api/#/&quot;&gt;OCI API docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-oci-api&quot;&gt;The OCI API&lt;/h2&gt;
+
+&lt;p&gt;OCI has a terrific API. Really. In case you haven’t had the pleasure of perusing it, check out the &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/api/#/&quot;&gt;full API details&lt;/a&gt;. It’s definitely worth digging in to.&lt;/p&gt;
+
+&lt;p&gt;The OCI API does have one or two idiosyncrasies, though, especially the signing process. It can be somewhat involved, which means that you can’t just easily “curl” it with off-the-shelf curl. Fortunately, there are &lt;a href=&quot;https://docs.oracle.com/en-us/iaas/Content/API/Concepts/signingrequests.htm&quot;&gt;plenty of examples&lt;/a&gt;, making it easier than ever to interact with the OCI API with your favorite language. I’ve also shared a quick-and-dirty way to interact with the OCI API using Ruby in &lt;a href=&quot;https://blogs.oracle.com/developers/post/making-quick-and-dirty-rest-calls-to-the-oci-api-in-ruby&quot;&gt;another article&lt;/a&gt;. Even with these tools, it still isn’t easy yet for me to fully explore the OCI API.&lt;/p&gt;
+
+&lt;h2 id=&quot;interacting-with-the-oci-api&quot;&gt;Interacting with the OCI API&lt;/h2&gt;
+
+&lt;p&gt;This is where tools like &lt;a href=&quot;https://paw.cloud&quot;&gt;Paw&lt;/a&gt; and &lt;a href=&quot;https://www.postman.com&quot;&gt;Postman&lt;/a&gt; shine. They’re both built to make it really easy to interact with APIs, and the type of apps I like to have on hand when I need to easily (and quickly) interact with the OCI API. Of the two, I opted to go with Postman since it doesn’t require a purchase (at least for the bare-bones functionality).&lt;/p&gt;
+
+&lt;p&gt;I started searching for some different options on how to get Postman to send the necessary format and stumbled across this &lt;a href=&quot;https://www.ateam-oracle.com/post/invoking-oci-rest-apis-using-postman&quot;&gt;great article&lt;/a&gt; which covered exactly what I was looking for. I followed the directions, which are summarized in the sections below.&lt;/p&gt;
+
+&lt;h2 id=&quot;first-try&quot;&gt;First try&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Clone the &lt;a href=&quot;https://github.com/ashishksingh/postman_collection_for_oci_rest/blob/master/OCI_REST_COLLECTION.postman_collection.json&quot;&gt;repo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Import the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_Environment&lt;/code&gt; environment&lt;/li&gt;
+  &lt;li&gt;Set the values for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tenancyId&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;authUserId&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyFingerprint&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;privateKey&lt;/code&gt; variables&lt;br /&gt;
+(only setting the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Current Value&lt;/code&gt;, not the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Initial Value&lt;/code&gt; for each)&lt;/li&gt;
+  &lt;li&gt;Import the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_REST_INITIALIZATION&lt;/code&gt; collection&lt;/li&gt;
+  &lt;li&gt;Run the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ONE_TIME_INITIALIZATION_CALL&lt;/code&gt; call within the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_REST_INITIALIZATION&lt;/code&gt; collection&lt;/li&gt;
+  &lt;li&gt;Import the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_REST_COLLECTION&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Modify the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET_OCI_ANNOUNCEMENTS&lt;/code&gt; call for the proper endpoint and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compartmentId&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;At this point, I tried to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET_OCI_ANNOUNCEMENTS&lt;/code&gt;, but didn’t have any success. I validated all of my credentials and they were correct… What?!  Why?!&lt;/p&gt;
+
+&lt;p&gt;I noticed that my API key had a password, but I hadn’t entered it anywhere. This is when I face-palmed myself, realizing that I’d failed to set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;passphrase&lt;/code&gt; variable (again, just the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Current value&lt;/code&gt;). After doing that, it worked great!&lt;/p&gt;
+
+&lt;p&gt;Ugh. Some of the simplest things can present the greatest challenges!&lt;/p&gt;
+
+&lt;h2 id=&quot;finally-working&quot;&gt;Finally working&lt;/h2&gt;
+
+&lt;p&gt;To summarize, here are the steps I took that worked for me:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Clone the &lt;a href=&quot;https://github.com/ashishksingh/postman_collection_for_oci_rest/blob/master/OCI_REST_COLLECTION.postman_collection.json&quot;&gt;repo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Import the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_Environment&lt;/code&gt; environment&lt;/li&gt;
+  &lt;li&gt;Set the values for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tenancyId&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;authUserId&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyFingerprint&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;privateKey&lt;/code&gt;, and &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;passphrase&lt;/code&gt;&lt;/strong&gt; variables&lt;br /&gt;
+(only setting the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Current Value&lt;/code&gt;, not the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Initial Value&lt;/code&gt; for each)&lt;/li&gt;
+  &lt;li&gt;Import the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_REST_INITIALIZATION&lt;/code&gt; collection&lt;/li&gt;
+  &lt;li&gt;Run the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ONE_TIME_INITIALIZATION_CALL&lt;/code&gt; call within the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_REST_INITIALIZATION&lt;/code&gt; collection&lt;/li&gt;
+  &lt;li&gt;Import the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_REST_COLLECTION&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Modify the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET_OCI_ANNOUNCEMENTS&lt;/code&gt; call for the proper endpoint and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compartmentId&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Which is almost identical to the first pass, except this time I made sure to set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Current Value&lt;/code&gt; of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;passphrase&lt;/code&gt; variable.&lt;/p&gt;
+
+&lt;p&gt;With that out of the way, I was able to move forward. I was thrilled by the ability to easily make calls, but what I really needed was the ability to quickly switch between different OCI environments.&lt;/p&gt;
+
+&lt;h2 id=&quot;multiple-postman-environments&quot;&gt;Multiple Postman Environments&lt;/h2&gt;
+
+&lt;p&gt;One of the great things about Postman Environments is that they’re designed to allow you to quickly switch as needed. My intention was to leverage a different Postman Environment for each OCI tenancy I needed to access through a handy custom script. I tried duplicating the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_Environment&lt;/code&gt; in the Postman Environment, making sure that the values got moved with it, but that didn’t seem to work. Eventually, I discovered that I was copying the private key contents from one Environment to another, and that the formatting was being stripped/changed (within Postman). The solution was to copy the key contents and paste a fresh copy into the new Environment. Voila! Success!&lt;/p&gt;
+
+&lt;h2 id=&quot;refactoring-the-script&quot;&gt;Refactoring the script&lt;/h2&gt;
+
+&lt;p&gt;Now, I &lt;em&gt;should&lt;/em&gt; have submitted a PR, but I’m including it here so I can share it for now. To get this super-awesome script to work with variables, there are a few small modifications that could be made:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Original line&lt;/th&gt;
+      &lt;th&gt;New line&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var host = pm.request.url.host.join(&quot;.&quot;) ;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var host = pm.variables.replaceIn(pm.request.url.host.join(&quot;.&quot;));&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var escapedTarget = encodeURI(request.url.split(pm.request.url.host.join(&quot;.&quot;))[1]);&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var escapedTarget = encodeURI(pm.variables.replaceIn(request.url.split(pm.request.url.host.join(&quot;.&quot;)))[1]);&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;body = pm.request.body.raw;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;body = pm.variables.replaceIn(pm.request.body.raw);&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The above few changes seem to permit me to use variables, which allows me to greatly extend the script.&lt;/p&gt;
+
+&lt;h2 id=&quot;refactored-call&quot;&gt;Refactored call&lt;/h2&gt;
+
+&lt;p&gt;Now that we’ve sorted out the script, let’s refactor the example given in the code, changing the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET_OCI_ANNOUNCEMENTS&lt;/code&gt; call. Start by adding the following variables:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Variable Lives In (Type)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Variable Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Variable Value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_REST_COLLECTION&lt;/code&gt; (Collection)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;oci_domain&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;oraclecloud.com&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OCI_Environment&lt;/code&gt; (or whatever you’re using) (Environment)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;oci_region&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;the OCI region you're talking to&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Next, go to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET_OCI_ANNOUNCEMENTS&lt;/code&gt; GET call and modify the request path to be:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://announcements.{{oci_region}}.{{oci_domain}}/20180904/announcements?compartmentId={{tenancyId}}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This tells it to use the OCI region specified in the Environment, as well as the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tenancyId&lt;/code&gt; (also specified in the Environment) and the OCI domain name that’s set in the Collection.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;As usual, something that seemed so cut and dry ended up being quite a bit more involved. But, we’ve got a solution now, and a way to interact with the OCI API using Postman on our local computer. Yay!&lt;/p&gt;
+
+&lt;!--- Links --&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tim Clegg</name>
+        
+        
+      </author>
+
+      
+        
+          <category term="devops" />
+        
+      
+
+      
+        <category term="api" />
+      
+        <category term="oci" />
+      
+        <category term="postman" />
+      
+      <summary type="html">Learn how to make calls directly to the OCI API using Postman.</summary>
+
+      
+      
+    </entry>
+  
+</feed>

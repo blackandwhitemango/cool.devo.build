@@ -1,0 +1,531 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Deploying Joomla! on OCI and MDS - Oracle Developer Tutorials</title>
+<meta name="description" content="MDS (MySQL Database Service) and Moodle are a perfect match for OCI. In this tutorial, you’ll learn how to deploy this popular learning management system with OCI.">
+
+
+  <meta name="author" content="Frédéric Descamps">
+  
+  <meta property="article:author" content="Frédéric Descamps">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Oracle Developer Tutorials">
+<meta property="og:title" content="Deploying Joomla! on OCI and MDS">
+<meta property="og:url" content="https://cool.devo.build/tutorials/deploying-joomla-on-oci-and-mds">
+
+
+  <meta property="og:description" content="MDS (MySQL Database Service) and Moodle are a perfect match for OCI. In this tutorial, you’ll learn how to deploy this popular learning management system with OCI.">
+
+
+
+  <meta property="og:image" content="https://cool.devo.build/tutorials/assets/joomla-ip-address-in-browser.png">
+
+
+
+
+  <meta name="twitter:site" content="@groundbreakers">
+  <meta name="twitter:title" content="Deploying Joomla! on OCI and MDS">
+  <meta name="twitter:description" content="MDS (MySQL Database Service) and Moodle are a perfect match for OCI. In this tutorial, you’ll learn how to deploy this popular learning management system with OCI.">
+  <meta name="twitter:url" content="https://cool.devo.build/tutorials/deploying-joomla-on-oci-and-mds">
+
+  
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://cool.devo.build/tutorials/assets/joomla-ip-address-in-browser.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@lefred">
+  
+
+
+
+  <meta property="article:published_time" content="2021-10-28T17:03:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://cool.devo.build/tutorials/deploying-joomla-on-oci-and-mds">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://cool.devo.build/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/main.xml" type="application/atom+xml" rel="alternate" title="Oracle Developer Tutorials Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+<link rel="icon" href="https://www.oracle.com/asset/web/favicons/favicon-32.png" sizes="32x32">
+
+    
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead oracle-header oracle-headerv1 oracle-headeradj oracle-headerdev">
+  <div class="masthead__inner-wrap oracle-headerw1">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <div class="oracle-headers1 site-logo">
+          <a class="oracle-logo" href="https://developer.oracle.com/"><span>Oracle</span></a>
+        </div>
+        <div class="u18-title site-title">
+          <a href="/">
+            Oracle Developer Tutorials
+            
+          </a>
+        </div>
+
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/topics/">Explore Topics</a>
+            </li><li class="masthead__menu-item">
+            <a href="https://signup.cloud.oracle.com/?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted">Try Oracle Free</a>
+          </li>
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+
+    <div class="sidebar sticky">
+    <p><strong>Tags:</strong> <span class="tags">
+
+            
+            <a class="animated-link tag" href="/topics/docker">docker</a>
+            <a class="animated-link tag" href="/topics/nodejs">nodejs</a>
+            <a class="animated-link tag" href="/topics/mysql">mysql</a>
+            </span>
+    </p>
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <a href="https:/lefred.be/"><h3 class="author__name" itemprop="name">Frédéric Descamps</h3></a>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>@lefred has been consulting OpenSource and MySQL for 20+ years. After graduating in Management Information Technology, Frédéric started his career as a developer for an ERP under HPUX.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/lefred" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/freddescamps" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/lefred" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  
+  
+  <p><strong>From this author:</strong>
+    <ul>
+      
+        <li><a href="/tutorials/deploy-moodle-on-OCI-with-mds">Deploy Moodle on OCI with MDS</a></li>
+      
+        <li><a href="/tutorials/matamo-with-oci-mds">Use Matomo Website Analytics on OCI with MDS</a></li>
+      
+        <li><a href="/tutorials/microsoft-sql-to-mds">How to import data from Microsoft SQL Server to MySQL Database Service</a></li>
+      
+    </ul>
+  
+  
+
+  </div>
+
+
+  <article class="page has-sidebar" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Deploying Joomla! on OCI and MDS">
+    
+    <meta itemprop="datePublished" content="2021-10-28T17:03:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Deploying Joomla! on OCI and MDS
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+
+        <p>The easiest way to deploy <a href="https://www.joomla.org/">Joomla!</a> on Oracle Cloud Infrastructure and MySQL Database Service, is to use OCI Resource Manager’s stack.</p>
+
+<p>Let’s see how easy it is to deploy such solution.</p>
+
+<p>If you don’t already have an OCI account, you can <a href="https://signup.cloud.oracle.com/?language=en&amp;sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted&amp;intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted&source=:ex:tb:::::WWMK211125P00023:WW_FY22_DevRel_DotBuild&SC=:ex:tb:::::WWMK211125P00023:WW_FY22_DevRel_DotBuild&pcode=WWMK211125P00023">get started for free</a>.</p>
+
+<p>The easiest way to deploy all the required resources (vcn, subnets, gateways, compute and MySQL instances, security lists, …) is to use a stack for Resource Manager. It consists in Terraform modules and information to easily deploy the architecture on OCI.</p>
+
+<p>To deploy Joomla! and a MDS instance, visit this GitHub repo and click on the button to deploy on OCI:</p>
+
+<p><img src="assets/joomla-deploy-button.png" alt="A callout highlighting the deploy button for Joola found in the OCI-Joomla repo" /></p>
+
+<p>The Oracle Cloud Dashboard will be open and the stack creation form will be loaded like this:</p>
+
+<p><img src="assets/joomla-stack-1-termsService.png" alt="OCI's Create Stack page, with a callout highlighting to the user to accept Oracle's terms of use" /></p>
+
+<p>As soon as we accept the Oracle Terms of Use, the form will be automatically filled with the stack’s information:</p>
+
+<p><img src="assets/joomla-stack-populates-next.png" alt="The form to create a stack automatically completes with information to create your stack with Joomla. A callout displays highlighting the page's Next button" /></p>
+
+<p>We can click on Next to reach the second form dedicated to the variables:</p>
+
+<p><img src="assets/joomla-form-for-variables.png" alt="A secondary form in the stack-creation process to configure the stack's variables" /></p>
+
+<p>As you can see some variables are already pre-filled. We need to enter some mandatory ones like the password the MDS admin password.</p>
+
+<p>We also have the possibility to enable HA for the MySQL Database Service instance, to have multiple webservers in case we want to have multiple Joomla! in front on the same database or multiple Joomla! with multiple dedicated databases… there are different possibilities.</p>
+
+<p>We also have the possibility to use existing resources in case you already created an architecture in OCI and you want to use it for Joomla! too.</p>
+
+<p><img src="assets/joomla-form-existing-variables.png" alt="The form to use existing variables to use with your Joomla-equipped stack" /></p>
+
+<p>When we are ready, we click Next and the review summary screen appears:</p>
+
+<p><img src="assets/joomla-review-screen.png" alt="The review summary screen for creating the stack" /></p>
+
+<p>When we apply the stack, OCI will create a job to create all the resources and deploy everything that we need. This will take some minutes (+/- 10min):</p>
+
+<p><img src="assets/joomla-job-details-partialLogs-banner.png" alt="Job details after creating the stack with a banner communicating the only partial logs may appear while the stack is being created" /></p>
+
+<p>When everything is created and deployed, the job will return a status:</p>
+
+<p><img src="assets/joomla-job-status-complete.png" alt="Job Information panel with complete job status message" /></p>
+
+<p>All the required information to finish the installation is reported in the Outputs section:</p>
+
+<p><img src="assets/joomla-outputs-tab.png" alt="Information to complete Joomla installation can be found in the Outputs tab" /></p>
+
+<p>Now we can paste the public IP (<code class="language-plaintext highlighter-rouge">joomla_public_ip</code>) in our Internet browser:</p>
+
+<p><img src="assets/joomla-ip-address-in-browser.png" alt="Browser with partially obscured IP address in the address bar and Joomla displaying in the main browser window" /></p>
+
+<p>After we enter the required information, we click Next to reach the database configuration form:</p>
+
+<p><img src="assets/joomla-database-configuration.png" alt="Joomla's Database Configuration window with complete forms, including database name and table prefix, and username, among other fields" /></p>
+
+<p>We enter all the information from the stack’s outputs section. As the database is not local to Joomla!, we also need to delete a file for security reasons.</p>
+
+<p>To connect to the Joomla! server, we need to use the generate ssh key (you can get it from the Outputs section) and connect to the public IP with the opc user. Then we need to remove the file generated by Joomla!’s installation wizard:</p>
+
+<p><img src="assets/joomla-SSH-terminal.png" alt="Terminal highlighting SSH key needed to connect with Joomla" /></p>
+
+<p>When this is done, we can continue with Joomla!’s installation:</p>
+
+<p><img src="assets/joomla-third-step-config-FTP.png" alt="Third step in Joomla configuration process, specifying FTP details" />
+<img src="assets/joomla-success-msg.png" alt="Success message in Joomla after installing it" /></p>
+
+<p>To finish the installation, we need to delete the installation folder:</p>
+
+<p><img src="assets/joomla-delete-installation-folder.png" alt="Terminal with command to delete Joomla's installation folder" /></p>
+
+<p>And here we go, Joomla! is installed:</p>
+
+<p><img src="assets/joomla-success-install-msg.png" alt="Joomla succcess message for installation" /></p>
+
+<p>The administration dashboard is also available on <code class="language-plaintext highlighter-rouge">/administrator/</code>:</p>
+
+<p><img src="assets/joomla-control-panel.png" alt="Obscured IP address with /administrator/ in its path, Joola dashboard in main browser window" /></p>
+
+<p>As you can see, deploying Joomla! on OCI to use MySQL Database Service is very easy. The most complicate operation if to remove the files and folders during the installation.</p>
+
+<p>Enjoy MySQL!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-28T17:03:00+00:00">October 28, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/main.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+    <li>
+      Back to <a href="https://developer.oracle.com?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildFooter&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetFooter">Developer.Oracle.com</a>
+    </li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Oracle</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="/assets/js/custom.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  
+    <script src="/assets/js/plugins/readmore.min.js"></script>
+  
+
+
+<!-- Start SiteCatalyst code -->
+<script>
+  var s_pageName = "devrel:en-us:";
+  if (typeof(document.title) != "undefined") {
+    var s_pageName = s_pageName + document.title.trim()
+  };
+</script>
+<script src="https://www.oracleimg.com/us/assets/metrics/ora_otn.js"></script>
+<!-- End SiteCatalyst code -->
+
+
+  </body>
+  
+</html>

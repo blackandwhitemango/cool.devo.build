@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
+  <link href="https://cool.devo.build/excerpts.xml" rel="self" type="application/atom+xml" />
+  <link href="https://cool.devo.build/" rel="alternate" type="text/html" />
+  <updated>2022-07-07T21:39:26+00:00</updated>
+  <id>https://cool.devo.build/excerpts.xml</id>
+    <title type="html">Oracle Developer Tutorials</title>
+    <subtitle>Cool stuff from Oracle's Developer Relations team</subtitle>
+    <author>
+        <name>Oracle Developer Community</name>
+    </author>
+    <entry>
+      <title type="html">HeatWave on AWS Metrics and Performance Tools</title>
+      <link href="https://cool.devo.build/tutorials/metrics-and-performance-hw-aws-devrel0622" rel="alternate" type="text/html" title="HeatWave on AWS Metrics and Performance Tools" />
+      <published>2022-06-16T17:00:00+00:00</published>
+      <updated>2022-06-16T17:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/metrics-and-performance-hw-aws-devrel0622</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/metrics-and-performance-hw-aws-devrel0622">&lt;p&gt;A quick overview of the performance and metrics console windows in MySQL HeatWave on AWS.&lt;/p&gt;</content>
+      <author>
+          <name>Victor Agreda</name>
+      </author>
+      <category term="cloudapps" />
+      <category term="mysql" />
+      <category term="database" />
+      <category term="heatwave" />
+      <summary type="html">A quick overview of the performance and metrics console windows in MySQL HeatWave on AWS.</summary>
+    </entry>
+    <entry>
+      <title type="html">Using the AWS Migration Service with HeatWave on AWS with WordPress as an Example</title>
+      <link href="https://cool.devo.build/tutorials/using-aws-migration-service-wp-ex-devrel0622" rel="alternate" type="text/html" title="Using the AWS Migration Service with HeatWave on AWS with WordPress as an Example" />
+      <published>2022-06-16T17:00:00+00:00</published>
+      <updated>2022-06-16T17:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/using-aws-migration-service-wp-ex-devrel0622</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/using-aws-migration-service-wp-ex-devrel0622">&lt;p&gt;A quick example of how you can move data over for use in MySQL HeatWave on AWS.&lt;/p&gt;</content>
+      <author>
+          <name>Victor Agreda</name>
+      </author>
+      <category term="cloudapps" />
+      <category term="mysql" />
+      <category term="database" />
+      <category term="heatwave" />
+      <summary type="html">A quick example of how you can move data over for use in MySQL HeatWave on AWS.</summary>
+    </entry>
+    <entry>
+      <title type="html">Connecting To and Managing HeatWave on AWS</title>
+      <link href="https://cool.devo.build/tutorials/connecting-managing-heatwave-aws-devrel0622" rel="alternate" type="text/html" title="Connecting To and Managing HeatWave on AWS" />
+      <published>2022-06-16T17:00:00+00:00</published>
+      <updated>2022-06-16T17:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/connecting-managing-heatwave-aws-devrel0622</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/connecting-managing-heatwave-aws-devrel0622">&lt;p&gt;Getting signed up, signed on, and some basic management tasks for your HeatWave on AWS cluster.&lt;/p&gt;</content>
+      <author>
+          <name>Victor Agreda</name>
+      </author>
+      <category term="cloudapps" />
+      <category term="mysql" />
+      <category term="database" />
+      <category term="heatwave" />
+      <category term="aws" />
+      <summary type="html">Getting signed up, signed on, and some basic management tasks for your HeatWave on AWS cluster.</summary>
+    </entry>
+    <entry>
+      <title type="html">Getting Started with MySQL HeatWave on AWS</title>
+      <link href="https://cool.devo.build/tutorials/oci-getting-started-heatwave-aws-v30622" rel="alternate" type="text/html" title="Getting Started with MySQL HeatWave on AWS" />
+      <published>2022-06-16T17:00:00+00:00</published>
+      <updated>2022-06-16T17:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/oci-getting-started-heatwave-aws-v30622</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/oci-getting-started-heatwave-aws-v30622">&lt;p&gt;Getting your OCI tenancy ready to connect to MySQL HeatWave on AWS. We will create a compute instance, DB System, and endpoint. We also began to provision MySQL HeatWave on AWS.&lt;/p&gt;</content>
+      <author>
+          <name>Victor Agreda</name>
+      </author>
+      <category term="cloudapps" />
+      <category term="mysql" />
+      <category term="database" />
+      <category term="heatwave" />
+      <category term="aws" />
+      <summary type="html">Getting your OCI tenancy ready to connect to MySQL HeatWave on AWS. We will create a compute instance, DB System, and endpoint. We also began to provision MySQL HeatWave on AWS.</summary>
+    </entry>
+    <entry>
+      <title type="html">Creating a Simple Chatbot using NodeJS on OCI</title>
+      <link href="https://cool.devo.build/tutorials/create-simple-chatbot-nodejs-oci" rel="alternate" type="text/html" title="Creating a Simple Chatbot using NodeJS on OCI" />
+      <published>2022-05-26T19:42:00+00:00</published>
+      <updated>2022-05-26T19:42:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/create-simple-chatbot-nodejs-oci</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/create-simple-chatbot-nodejs-oci">&lt;p&gt;A very basic chatbot using nodejs on an oracle cloud compute instance.&lt;/p&gt;</content>
+      <author>
+          <name>Victor Agreda</name>
+      </author>
+      <category term="frameworks" />
+      <category term="cloudapps" />
+      <category term="open-source" />
+      <category term="oci" />
+      <category term="nodejs" />
+      <summary type="html">A very basic chatbot using nodejs on an oracle cloud compute instance.</summary>
+    </entry>
+    <entry>
+      <title type="html">Get started with Ruby on Rails on Oracle Cloud</title>
+      <link href="https://cool.devo.build/tutorials/get-started-with-rubyonrails" rel="alternate" type="text/html" title="Get started with Ruby on Rails on Oracle Cloud" />
+      <published>2022-04-27T09:00:00+00:00</published>
+      <updated>2022-04-27T09:00:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/get-started-with-rubyonrails</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/get-started-with-rubyonrails"></content>
+      <author>
+          <name>Hassan Ajan</name>
+      </author>
+      <category term="frameworks" />
+      <category term="cloudapps" />
+      <category term="ruby" />
+      <category term="rails" />
+      <category term="MySQL" />
+      <category term="RubyOnRails" />
+    </entry>
+    <entry>
+      <title type="html">Deploying a Custom Nodejs Web Application Integrated with Identity Cloud Service for Unique Single Sign On UX</title>
+      <link href="https://cool.devo.build/tutorials/oke-nodejs-webapp-sso-ex" rel="alternate" type="text/html" title="Deploying a Custom Nodejs Web Application Integrated with Identity Cloud Service for Unique Single Sign On UX" />
+      <published>2022-03-10T08:42:00+00:00</published>
+      <updated>2022-03-10T08:42:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/oke-nodejs-webapp-sso-ex</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/oke-nodejs-webapp-sso-ex">&lt;p&gt;How to configure custom Node.js web application to have a unique Single Sign On user experience.&lt;/p&gt;</content>
+      <author>
+          <name>Javier Mugueta</name>
+      </author>
+      <category term="frameworks" />
+      <category term="cloudapps" />
+      <category term="open-source" />
+      <category term="oci" />
+      <category term="always-free" />
+      <category term="nodejs" />
+      <category term="javascript" />
+      <summary type="html">How to configure custom Node.js web application to have a unique Single Sign On user experience.</summary>
+    </entry>
+    <entry>
+      <title type="html">Tracing A Node.js with OCI Application Performance Monitoring and Zipkin</title>
+      <link href="https://cool.devo.build/tutorials/tracing-node-js-micro-service-oci" rel="alternate" type="text/html" title="Tracing A Node.js with OCI Application Performance Monitoring and Zipkin" />
+      <published>2022-02-25T19:42:00+00:00</published>
+      <updated>2022-02-25T19:42:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/tracing-node-js-micro-service-oci</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/tracing-node-js-micro-service-oci">&lt;p&gt;Using Zipkin as an open-source tracking tool with OCI Application Performance Monitoring.&lt;/p&gt;</content>
+      <author>
+          <name>Javier Mugueta</name>
+      </author>
+      <category term="frameworks" />
+      <category term="cloudapps" />
+      <category term="open-source" />
+      <category term="oci" />
+      <category term="nodejs" />
+      <summary type="html">Using Zipkin as an open-source tracking tool with OCI Application Performance Monitoring.</summary>
+    </entry>
+    <entry>
+      <title type="html">Sending Emails from OCI with Email Delivery Service in Node.js</title>
+      <link href="https://cool.devo.build/tutorials/nodejs-sendmail-oci" rel="alternate" type="text/html" title="Sending Emails from OCI with Email Delivery Service in Node.js" />
+      <published>2022-02-14T19:42:00+00:00</published>
+      <updated>2022-02-14T19:42:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/nodejs-sendmail-oci</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/nodejs-sendmail-oci">&lt;p&gt;Use Oracle Cloud Infrastructure to manage a high-volume email solution for sending out emails to many recipients for critical communications.&lt;/p&gt;</content>
+      <author>
+          <name>Javier Mugueta</name>
+      </author>
+      <category term="frameworks" />
+      <category term="cloudapps" />
+      <category term="open-source" />
+      <category term="oci" />
+      <category term="always-free" />
+      <category term="nodejs" />
+      <category term="javascript" />
+      <summary type="html">Use Oracle Cloud Infrastructure to manage a high-volume email solution for sending out emails to many recipients for critical communications.</summary>
+    </entry>
+    <entry>
+      <title type="html">Making calls to the Oracle Cloud API using Postman</title>
+      <link href="https://cool.devo.build/tutorials/making-calls-to-oci-api-with-postman" rel="alternate" type="text/html" title="Making calls to the Oracle Cloud API using Postman" />
+      <published>2022-02-03T07:19:00+00:00</published>
+      <updated>2022-02-03T07:19:00+00:00</updated>
+      <id>https://cool.devo.build/tutorials/making-calls-to-oci-api-with-postman</id>
+      <content type="html" xml:base="https://cool.devo.build/tutorials/making-calls-to-oci-api-with-postman">&lt;p&gt;Learn how to make calls directly to the OCI API using Postman.&lt;/p&gt;</content>
+      <author>
+          <name>Tim Clegg</name>
+      </author>
+      <category term="devops" />
+      <category term="api" />
+      <category term="oci" />
+      <category term="postman" />
+      <summary type="html">Learn how to make calls directly to the OCI API using Postman.</summary>
+    </entry>
+</feed>

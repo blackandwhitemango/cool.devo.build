@@ -1,0 +1,753 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Get started with Ruby on Rails on Oracle Cloud - Oracle Developer Tutorials</title>
+<meta name="description" content="Cool stuff from Oracle’s Developer Relations team">
+
+
+  <meta name="author" content="Hassan Ajan">
+  
+  <meta property="article:author" content="Hassan Ajan">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Oracle Developer Tutorials">
+<meta property="og:title" content="Get started with Ruby on Rails on Oracle Cloud">
+<meta property="og:url" content="https://cool.devo.build/tutorials/get-started-with-rubyonrails">
+
+
+  <meta property="og:description" content="Cool stuff from Oracle’s Developer Relations team">
+
+
+
+  <meta property="og:image" content="https://cool.devo.build/tutorials/assets/rails-logo.png">
+
+
+
+
+  <meta name="twitter:site" content="@groundbreakers">
+  <meta name="twitter:title" content="Get started with Ruby on Rails on Oracle Cloud">
+  <meta name="twitter:description" content="Cool stuff from Oracle’s Developer Relations team">
+  <meta name="twitter:url" content="https://cool.devo.build/tutorials/get-started-with-rubyonrails">
+
+  
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://cool.devo.build/tutorials/assets/rails-logo.png">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2022-04-27T09:00:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://cool.devo.build/tutorials/get-started-with-rubyonrails">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://cool.devo.build/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/main.xml" type="application/atom+xml" rel="alternate" title="Oracle Developer Tutorials Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+<link rel="icon" href="https://www.oracle.com/asset/web/favicons/favicon-32.png" sizes="32x32">
+
+    
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead oracle-header oracle-headerv1 oracle-headeradj oracle-headerdev">
+  <div class="masthead__inner-wrap oracle-headerw1">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <div class="oracle-headers1 site-logo">
+          <a class="oracle-logo" href="https://developer.oracle.com/"><span>Oracle</span></a>
+        </div>
+        <div class="u18-title site-title">
+          <a href="/">
+            Oracle Developer Tutorials
+            
+          </a>
+        </div>
+
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/topics/">Explore Topics</a>
+            </li><li class="masthead__menu-item">
+            <a href="https://signup.cloud.oracle.com/?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted">Try Oracle Free</a>
+          </li>
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+
+    <div class="sidebar sticky">
+    <p><strong>Tags:</strong> <span class="tags">
+
+            
+            <a class="animated-link tag" href="/topics/ruby">ruby</a>
+            <a class="animated-link tag" href="/topics/rails">rails</a>
+            <a class="animated-link tag" href="/topics/mysql">MySQL</a>
+            <a class="animated-link tag" href="/topics/rubyonrails">RubyOnRails</a>
+            </span>
+    </p>
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Hassan Ajan</h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/hassanajan" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  
+  
+  
+
+  </div>
+
+
+  <article class="page has-sidebar" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Get started with Ruby on Rails on Oracle Cloud">
+    
+    <meta itemprop="datePublished" content="2022-04-27T09:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Get started with Ruby on Rails on Oracle Cloud
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+
+        <picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/rails-logo.png 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/rails-logo.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/rails-logo.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/rails-logo@2x.png" alt="Ruby on Rails Logo" title="Ruby on Rails Logo" />
+            </picture>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Ruby on Rails is a rapid development framework. It’s used by over a million websites, including Airbnb, Bloomberg, GitHub, GitLab, CouchSurfing, and many more.</p>
+
+<p>The Ruby language is easy to understand as it’s close to English, making it great for beginners. In this tutorial we’ll show you how to get started with a new Ruby on Rails project and how to bring your existing Ruby on Rails application to Oracle Cloud Infrastructure (OCI).</p>
+
+<h2 id="set-up-environment-automatically">Set up environment automatically</h2>
+
+<p>Don’t have time to read the whole article? Use the “Deploy Button” to provision the Ruby on Rails environment with a few clicks. In this environment you can build a new application or bring your existing Ruby on Rails application to OCI.</p>
+
+<p><a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&amp;zipUrl=https://github.com/haj/oci-arch-rubyonrails-mds/archive/refs/tags/latest.zip&source=:ex:tb::::::WW_FY22_DevRel_DotBuild&SC=:ex:tb::::::WW_FY22_DevRel_DotBuild&pcode="><img src="https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg?source=:ex:tb::::::WW_FY22_DevRel_DotBuild&SC=:ex:tb::::::WW_FY22_DevRel_DotBuild&pcode=" alt="Deploy to Oracle Cloud" /></a></p>
+
+<p>The button takes you to Oracle Resource Manager which runs Terraform code that will provision the full Ruby on Rails environment.</p>
+
+<p>The following resources will be created:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th style="text-align: center">Service Name</th>
+      <th style="text-align: right">Additional Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td style="text-align: center">Virtual Cloud Network</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td style="text-align: center">Public subnet</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td style="text-align: center">Private subnet</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td style="text-align: center">VM - Ubuntu</td>
+      <td style="text-align: right">1 OCPU, 8 Gb Memory 1 OCPU. can be scaled up to 1024 GB Memory and 128 OCPUs</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td style="text-align: center">MySQL Database Service</td>
+      <td style="text-align: right">can be scaled up to run in HA with up to 3 nodes</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td style="text-align: center">Bastion Host</td>
+      <td style="text-align: right">can optionally be replaced with bastion service</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td style="text-align: center">Load balancer 10 mpbs</td>
+      <td style="text-align: right">flex loadbalancer upto 4000 mbps</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The public subnet will contain the following resources:</p>
+
+<ul>
+  <li>Load balancer</li>
+  <li>Bastion Host</li>
+</ul>
+
+<p>The private subnet will contain the following resources:</p>
+
+<ul>
+  <li>Ruby on Rails VM(s)</li>
+  <li>Managed MySQL Database</li>
+</ul>
+
+<p>Software packages installed on the VMs:</p>
+
+<ul>
+  <li>RBENV Package manager for ruby to make it easy to manage different ruby versions and gem packs</li>
+  <li>Node.js</li>
+</ul>
+
+<p>The bootstrap script in the GitHub repo shows how the VMs are configured and all the packages that are installed:</p>
+
+<p>You can check out <a href="https://github.com/haj/oci-arch-rubyonrails-mds/blob/main/scripts/ror_bootstrap.sh">the script on Github</a>.</p>
+
+<p>If you have deployed the environment using the deploy button, you can skip the next section. The bootstrap script has been run automatically when the VMs were provisioned.</p>
+
+<h3 id="how-to-setup-environment-automatically">How to setup environment automatically</h3>
+
+<ol>
+  <li>
+    <p>Click the “Deploy to Oracle” button below.</p>
+
+    <p><a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&amp;zipUrl=https://github.com/haj/oci-arch-rubyonrails-mds/archive/refs/tags/latest.zip&source=:ex:tb::::::WW_FY22_DevRel_DotBuild&SC=:ex:tb::::::WW_FY22_DevRel_DotBuild&pcode="><img src="https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg?source=:ex:tb::::::WW_FY22_DevRel_DotBuild&SC=:ex:tb::::::WW_FY22_DevRel_DotBuild&pcode=" alt="Deploy to Oracle Cloud" /></a></p>
+  </li>
+  <li>If you aren’t already signed in, when prompted, enter the tenancy and user credentials.</li>
+  <li>Review and accept the terms and conditions.</li>
+  <li>Select the region where you want to deploy the stack.</li>
+  <li>Follow the on-screen prompts and instructions to create the stack.</li>
+  <li>After creating the stack, click <strong>Terraform Actions</strong>, and select <strong>Plan</strong>.</li>
+  <li>Wait for the job to be completed, and review the plan. To make any changes, return to the Stack Details page, click <strong>Edit Stack</strong>, and make the required changes. Then, run the <strong>Plan</strong> action again.</li>
+  <li>If no further changes are necessary, return to the Stack Details page, click <strong>Terraform Actions</strong>, and select <strong>Apply</strong>.</li>
+</ol>
+
+<h2 id="how-to-setup-environment-manually">How to setup environment manually</h2>
+
+<p>If you prefer to setup the environment manually you need to provision the resources and then install the Ruby on Rails environment.</p>
+
+<p>Provisioning the VM and MySQL database is not covered in this guide.</p>
+
+<p>Once you have a VM and MySQL database ready you can proceed to the next step to install Ruby on Rails.</p>
+
+<h3 id="minimum-requirements">Minimum requirements</h3>
+
+<ul>
+  <li>VM running Ubuntu 20.04</li>
+  <li>MySQL Database</li>
+</ul>
+
+<h3 id="how-to-install-ruby-on-rails-on-ubuntu-2004-with-rbenv">How to install Ruby on Rails on Ubuntu 20.04 with rbenv</h3>
+
+<p>SSH to your VM and run the following commands. Make sure to run the command with a user that has sudo rights. On Ubuntu the <code class="language-plaintext highlighter-rouge">ubuntu</code> user is usually fine:</p>
+
+<p>Update apt:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo apt update
+</span></code></pre></div></div>
+
+<p>Install ruby manager, mysql-client and other dependencies:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo apt-get install -y build-essential git libsqlite3-dev libssl-dev libzlcore-dev mysql-client libmysqlclient-dev git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs npm
+</span></code></pre></div></div>
+
+<p>Install yarn:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+sudo apt update
+sudo apt install -y yarn
+</span></code></pre></div></div>
+
+<p>Install the ruby package manager to help install and manage different ruby versions:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">cd
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+</span><span class="gp">echo 'export PATH="$</span>HOME/.rbenv/bin:<span class="nv">$PATH</span><span class="s2">"' &gt;&gt; ~/.bash_profile
+</span><span class="gp">echo 'eval "$</span><span class="s2">(rbenv init - bash)"</span><span class="s1">' &gt;&gt; ~/.bash_profile
+</span><span class="go">source ~/.bash_profile
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+</span><span class="gp">echo 'export PATH="$</span>HOME/.rbenv/plugins/ruby-build/bin:<span class="nv">$PATH</span><span class="s2">"' &gt;&gt; ~/.bash_profile
+</span><span class="go">source ~/.bash_profile
+</span></code></pre></div></div>
+
+<p>Now we are ready to install ruby. If you need a different version, change the version number:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">rbenv install 3.0.1
+</span></code></pre></div></div>
+
+<p>Check that the correct version of ruby is installed:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">ruby -v
+</span></code></pre></div></div>
+
+<p>Use version 3.0.1 and make it default:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">rbenv global 3.0.1
+rbenv local 3.0.1
+</span></code></pre></div></div>
+
+<p>Reload the environment variables to ensure the correct ruby binaries are run:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">source ~/.bash_profile
+</span></code></pre></div></div>
+
+<p>Let’s install Rails framework and bundler gem:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">gem install rails
+gem install bundler
+</span></code></pre></div></div>
+
+<p>Congratulations, you have now installed Ruby on Rails on your VM!</p>
+
+<h2 id="create-your-ruby-on-rails-application">Create your Ruby on Rails application</h2>
+
+<p>In this section we will create a rails application using the built-in scaffolding methods of rails. We will connect the rails app to the database provisioned.</p>
+
+<p>Let’s create a directory where our app will reside and make the <code class="language-plaintext highlighter-rouge">ubuntu</code> user the owner of the directory:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo mkdir /opt/apps
+sudo chown ubuntu:ubuntu /opt/apps
+</span></code></pre></div></div>
+
+<p>Create a new app that is preconfigured with a mysql adapter:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">cd /opt/apps
+rails new myapp -d mysql
+</span></code></pre></div></div>
+
+<p>Open up port 8080 for incoming HTTP requests:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 8080 -j ACCEPT
+</span><span class="gp">#</span>SAVE STATE
+</code></pre></div></div>
+
+<p>Edit the database config file and add your MySQL username and MySQL database name and MySQL host URL:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">nano /opt/apps/myapp/config/database.yml
+</span></code></pre></div></div>
+
+<p>Create a database schema. If you have already created a database schema you can skip this:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">rake db:create
+</span></code></pre></div></div>
+
+<p>Run all migration scripts to create the tables in the DB. This step needs to run every time you makes change to table definitions:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">rake db:migrate
+</span></code></pre></div></div>
+
+<p>Start the rails server as a background process, listen on port 8080, bind all interfaces, and send log output to startup.log:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">rails s -p 8080 -b 0.0.0.0 &gt;</span><span class="o">&gt;</span> ./log/startup.log &amp;
+</code></pre></div></div>
+
+<h3 id="accessing-the-application">Accessing the application</h3>
+
+<p>If you configured your VM manually you should now be able to access your new rails application at <code class="language-plaintext highlighter-rouge">http://my-vm-public.ip:8080</code>.</p>
+
+<p>If you provisioned your environment automatically using the “Deploy Button” you can access the application through the load balancer, e.g. <code class="language-plaintext highlighter-rouge">http://my-load-balancer-ip</code>.</p>
+
+<p>Check Oracle Resource Manager output for the IP or check the load balancer page.</p>
+
+<p>The load balancer is configured to listen on port 80 and forwards all traffic to the VM where the Ruby on Rails application is running.</p>
+
+<p>The load balancer will forward traffic to all the VMs if you provisioned more than one VM.</p>
+
+<h3 id="summary">Summary</h3>
+
+<ul>
+  <li>A new Rails App is created in the directory <code class="language-plaintext highlighter-rouge">/opt/apps/myapp</code>.</li>
+  <li>A database schema is created on the MySQL server.
+    <ul>
+      <li>Database schema name: <code class="language-plaintext highlighter-rouge">myapp</code></li>
+    </ul>
+  </li>
+  <li>The app is configured to connect to the database. Configuration can be found in <code class="language-plaintext highlighter-rouge">/opt/apps/app/config/database.yml</code>.</li>
+</ul>
+
+<h2 id="how-to-deploy-your-existing-application">How to deploy your existing application</h2>
+
+<ol>
+  <li>
+    <p>Before deleting the app we will take a backup of the database.yml file. We’ll need it later.</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> cp /opt/apps/myapp/config/database.yml /opt/apps/bck_database.yml
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Delete the existing vanilla Ruby on Rails app created in <code class="language-plaintext highlighter-rouge">/opt/apps/myapp</code></p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> rm -rf /opt/apps/myapp
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Copy your application to the server using scp</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> scp myapp.zip ubuntu@server-ip:/opt/apps/
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Unpack the application</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> unzip myapp.zip ./myapp/
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Copy the generated database config file</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> cp /opt/apps/bck_database.yml ./myapp/config/database.yml
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Or edit the existing database config file (<code class="language-plaintext highlighter-rouge">database.yml</code>)</p>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="na">username</span><span class="pi">:</span> 
+ <span class="na">password</span><span class="pi">:</span> 
+ <span class="na">url</span><span class="pi">:</span> 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Migrate your data to the MySQL Database</p>
+  </li>
+  <li>
+    <p>Install dependencies</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> bundle install
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run Rails migrations</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> rake db:migrate 
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Start the server</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> rails s -b 0.0.0.0 -p 8080
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="how-to-change-ruby-version">How to change Ruby version</h2>
+
+<p>The default ruby version installed is 3.0.1. If you need a different ruby version simply run:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">rbenv install 3.0.2
+</span></code></pre></div></div>
+
+<p>You can see available Ruby version by running:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">rbenv install list 
+</span></code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-04-27T09:00:00+00:00">April 27, 2022</time></p>
+
+
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/main.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+    <li>
+      Back to <a href="https://developer.oracle.com?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildFooter&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetFooter">Developer.Oracle.com</a>
+    </li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Oracle</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="/assets/js/custom.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  
+    <script src="/assets/js/plugins/readmore.min.js"></script>
+  
+
+
+<!-- Start SiteCatalyst code -->
+<script>
+  var s_pageName = "devrel:en-us:";
+  if (typeof(document.title) != "undefined") {
+    var s_pageName = s_pageName + document.title.trim()
+  };
+</script>
+<script src="https://www.oracleimg.com/us/assets/metrics/ora_otn.js"></script>
+<!-- End SiteCatalyst code -->
+
+
+  </body>
+  
+</html>

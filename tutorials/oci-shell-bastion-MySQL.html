@@ -1,0 +1,495 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Using OCI Cloud Shell &amp; Bastion with MySQL Database Service - Oracle Developer Tutorials</title>
+<meta name="description" content="Recently, Oracle added a Bastion Service to OCI. This tutorial walks you through using this service with OCI Cloud Shell.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Oracle Developer Tutorials">
+<meta property="og:title" content="Using OCI Cloud Shell &amp; Bastion with MySQL Database Service">
+<meta property="og:url" content="https://cool.devo.build/tutorials/oci-shell-bastion-MySQL">
+
+
+  <meta property="og:description" content="Recently, Oracle added a Bastion Service to OCI. This tutorial walks you through using this service with OCI Cloud Shell.">
+
+
+
+  <meta property="og:image" content="https://cool.devo.build/tutorials/assets/sql-dolphin.png">
+
+
+
+
+  <meta name="twitter:site" content="@groundbreakers">
+  <meta name="twitter:title" content="Using OCI Cloud Shell &amp; Bastion with MySQL Database Service">
+  <meta name="twitter:description" content="Recently, Oracle added a Bastion Service to OCI. This tutorial walks you through using this service with OCI Cloud Shell.">
+  <meta name="twitter:url" content="https://cool.devo.build/tutorials/oci-shell-bastion-MySQL">
+
+  
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://cool.devo.build/tutorials/assets/sql-dolphin.png">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2021-10-26T16:48:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://cool.devo.build/tutorials/oci-shell-bastion-MySQL">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://cool.devo.build/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/main.xml" type="application/atom+xml" rel="alternate" title="Oracle Developer Tutorials Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+<link rel="icon" href="https://www.oracle.com/asset/web/favicons/favicon-32.png" sizes="32x32">
+
+    
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead oracle-header oracle-headerv1 oracle-headeradj oracle-headerdev">
+  <div class="masthead__inner-wrap oracle-headerw1">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <div class="oracle-headers1 site-logo">
+          <a class="oracle-logo" href="https://developer.oracle.com/"><span>Oracle</span></a>
+        </div>
+        <div class="u18-title site-title">
+          <a href="/">
+            Oracle Developer Tutorials
+            
+          </a>
+        </div>
+
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/topics/">Explore Topics</a>
+            </li><li class="masthead__menu-item">
+            <a href="https://signup.cloud.oracle.com/?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted">Try Oracle Free</a>
+          </li>
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+
+    <div class="sidebar sticky">
+    <p><strong>Tags:</strong> <span class="tags">
+
+            
+            <a class="animated-link tag" href="/topics/oci">oci</a>
+            <a class="animated-link tag" href="/topics/mysql">mysql</a>
+            <a class="animated-link tag" href="/topics/always-free">always-free</a>
+            </span>
+    </p>
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  
+  
+  
+
+  </div>
+
+
+  <article class="page has-sidebar" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Using OCI Cloud Shell &amp; Bastion with MySQL Database Service">
+    
+    <meta itemprop="datePublished" content="2021-10-26T16:48:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Using OCI Cloud Shell &amp; Bastion with MySQL Database Service
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+
+        <p>Recently, Oracle added a Bastion Service to OCI. And you may also have noticed that the OCI Dashboard offers you the possibility to use a browser based terminal: Cloud Shell.</p>
+
+<p>Today, we will see how we can use these two components to connect from the browser to a MDS DB System.</p>
+
+<p>We need the MySQL DB System’s IP:</p>
+
+<p><img src="assets/system-details-IP.png" alt="System details in OCI with IP address highlighted" /></p>
+
+<p>So in this example, the MDS Instance we want to connect to has 10.0.0.99 as IP.</p>
+
+<h2 id="bastion-service">Bastion Service</h2>
+
+<p>Now we will create a new Bastion Service that will allow us to create a SSH Tunnel to our MySQL DB System.</p>
+
+<p>The Bastion Service’s dashboard is located in <strong>Identity &amp; Security</strong>:</p>
+
+<p><img src="assets/identity-security-dash.png" alt="Identity and Security dashboard, where access Bastion" /></p>
+
+<p>If this is the first time you create a Bastion, the list will be empty and you just need to create one:</p>
+
+<p><img src="assets/create-bastion-button.png" alt="The 'Create Bastion' button if you've not created one before" /></p>
+
+<p>We need to select the VCN, the subnet and a block of allow IPs. As I don’t know the IP of the Cloud Shell, I will use 0.0.0.0/0:</p>
+
+<p><img src="assets/configuring-bastion.png" alt="With Bastion selected, begin to configure its instance" /></p>
+
+<p>If you don’t like to use 0.0.0.0/0, you need to add the public IP used by Cloud Shell with \32:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdescamp@cloudshell:~ (us-ashburn-1)$ curl ifconfig.me
+1XX.XXX.XXX.XXX
+</code></pre></div></div>
+
+<p>Now that the Bastion is created, I need to create ta session that will be used to create the SSH Tunnel to MDS.</p>
+
+<p>But before creating the session, we will start the Cloud Shell and generate a SSH Key we will use for the tunnel’s session.</p>
+
+<h2 id="cloud-shell">Cloud Shell</h2>
+
+<p>To Start Cloud Shell, we just click on this icon on the top right corner of the OCI’s Dashboard:</p>
+
+<p><img src="assets/cloud-shell-button.png" alt="Click the Cloud Shell button to get started" /></p>
+
+<p>This will open the Cloud Shell in the browser, the first time it takes some time to generate it.</p>
+
+<p>In the Cloud Shell, we can now create the SSH Key we need using the following command:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>ssh-keygen <span class="nt">-t</span> rsa
+</code></pre></div></div>
+
+<p>This is how it looks like and as you can see the public key we need will be stored in <code class="language-plaintext highlighter-rouge">~/.ssh/id_rsa.pub</code>:</p>
+
+<p><img src="assets/public-key-location.png" alt="The public key is stored in ~/.ssh/id_rsa.pub:" /></p>
+
+<h1 id="bastion-session">Bastion Session</h1>
+
+<p>As we have now all we need to create the Bastion Session for the SSH Tunnel, we can go back to the Bastion we created earlier and create a new session:</p>
+
+<p><img src="assets/create-new-bastion-session.png" alt="Create a new Bastion session" /></p>
+
+<p>We need to choose the <strong>SSH port forwarding session</strong> as Type, add the MySQL Database System’s IP and paste the SSH Public Key.</p>
+
+<p>After the session is created (which took me a little over two hours), you will have something like this:</p>
+
+<p><img src="assets/dotted-menu-button.png" alt="Click the vertical, dotted item" /></p>
+
+<p>If you click on the 3 vertical dots, you can view or copy the ssh command we need to run in Cloud Shell:</p>
+
+<p><img src="assets/view-ssh-command.png" alt="Copy the ssh command" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">-i &lt;privateKey&gt;</code> is not really required as we only have one single key for the moment. Also, the error message “bind: Cannot assign requested address” is not a problem. This message only displays because because the Cloud Shell tries to bind on ipv6 too. If you want to avoid it, just add -4 between ssh and -i like this:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">ssh -4 -i
+</span></code></pre></div></div>
+
+<p>Note the “&amp;” at the end of the ssh command.</p>
+
+<h2 id="connecting-to-mds">Connecting to MDS</h2>
+
+<p>And finally, we can connect to MySQL Database Service’s instance from Cloud Shell simply using MySQL Shell:</p>
+
+<p><img src="assets/cloud-connect-from-shell.png" alt="Server version highlighted in shell" /></p>
+
+<p>As you can see it’s easy to connect from Cloud Shel once the Tunnel is ready.</p>
+
+<p>Enjoy MySQL, MySQL Database Service and OCI!</p>
+
+<p>For Dump &amp; Load data to/from MDS , I recommend using a dedicated compute instance with multiple cores instead of Cloud Shell.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-26T16:48:00+00:00">October 26, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/main.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+    <li>
+      Back to <a href="https://developer.oracle.com?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildFooter&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetFooter">Developer.Oracle.com</a>
+    </li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Oracle</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="/assets/js/custom.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  
+    <script src="/assets/js/plugins/readmore.min.js"></script>
+  
+
+
+<!-- Start SiteCatalyst code -->
+<script>
+  var s_pageName = "devrel:en-us:";
+  if (typeof(document.title) != "undefined") {
+    var s_pageName = s_pageName + document.title.trim()
+  };
+</script>
+<script src="https://www.oracleimg.com/us/assets/metrics/ora_otn.js"></script>
+<!-- End SiteCatalyst code -->
+
+
+  </body>
+  
+</html>

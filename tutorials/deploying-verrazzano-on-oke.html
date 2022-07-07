@@ -1,0 +1,647 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Deploying Verrazzano on Oracle Container Engine for Kubernetes (OKE) - Oracle Developer Tutorials</title>
+<meta name="description" content="How to deploy Verrazzano an OKE cluster.">
+
+
+  <meta name="author" content="Ali Mukadam">
+  
+  <meta property="article:author" content="Ali Mukadam">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Oracle Developer Tutorials">
+<meta property="og:title" content="Deploying Verrazzano on Oracle Container Engine for Kubernetes (OKE)">
+<meta property="og:url" content="https://cool.devo.build/tutorials/deploying-verrazzano-on-oke">
+
+
+  <meta property="og:description" content="How to deploy Verrazzano an OKE cluster.">
+
+
+
+  <meta property="og:image" content="https://cool.devo.build/tutorials/assets/verrazzano-logo.png">
+
+
+
+
+  <meta name="twitter:site" content="@groundbreakers">
+  <meta name="twitter:title" content="Deploying Verrazzano on Oracle Container Engine for Kubernetes (OKE)">
+  <meta name="twitter:description" content="How to deploy Verrazzano an OKE cluster.">
+  <meta name="twitter:url" content="https://cool.devo.build/tutorials/deploying-verrazzano-on-oke">
+
+  
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://cool.devo.build/tutorials/assets/verrazzano-logo.png">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2021-11-12T09:11:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://cool.devo.build/tutorials/deploying-verrazzano-on-oke">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://cool.devo.build/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/main.xml" type="application/atom+xml" rel="alternate" title="Oracle Developer Tutorials Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+<link rel="icon" href="https://www.oracle.com/asset/web/favicons/favicon-32.png" sizes="32x32">
+
+    
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead oracle-header oracle-headerv1 oracle-headeradj oracle-headerdev">
+  <div class="masthead__inner-wrap oracle-headerw1">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <div class="oracle-headers1 site-logo">
+          <a class="oracle-logo" href="https://developer.oracle.com/"><span>Oracle</span></a>
+        </div>
+        <div class="u18-title site-title">
+          <a href="/">
+            Oracle Developer Tutorials
+            
+          </a>
+        </div>
+
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/topics/">Explore Topics</a>
+            </li><li class="masthead__menu-item">
+            <a href="https://signup.cloud.oracle.com/?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted">Try Oracle Free</a>
+          </li>
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+
+    <div class="sidebar sticky">
+    <p><strong>Tags:</strong> <span class="tags">
+
+            
+            <a class="animated-link tag" href="/topics/open-source">open-source</a>
+            <a class="animated-link tag" href="/topics/oke">oke</a>
+            <a class="animated-link tag" href="/topics/kubernetes">kubernetes</a>
+            <a class="animated-link tag" href="/topics/terraform">terraform</a>
+            <a class="animated-link tag" href="/topics/devops">devops</a>
+            </span>
+    </p>
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <a href="https:/lmukadam.medium.com"><h3 class="author__name" itemprop="name">Ali Mukadam</h3></a>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Technical Director, Asia Pacific Center of Excellence.</p>
+
+<p>For the past 16 years, Ali has held technical presales, architect and industry consulting roles in BEA Systems and Oracle across Asia Pacific, focusing on middleware and application development. Although he pretends to be Thor, his real areas of expertise are Application Development, Integration, SOA (Service Oriented Architecture) and BPM (Business Process Management). An early and worthy Docker and Kubernetes adopter, Ali also leads a few open source projects (namely <a href="https://github.com/oracle-terraform-modules/terraform-oci-oke">terraform-oci-oke</a>) aimed at facilitating the adoption of Kubernetes and other cloud native technologies on Oracle Cloud Infrastructure.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/https://www.linkedin.com/in/alimukadam/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  
+  
+  <p><strong>From this author:</strong>
+    <ul>
+      
+        <li><a href="/tutorials/deploying-the-argo-project-on-oke">Deploying the Argo CD on Oracle Container Engine for Kubernetes (OKE)</a></li>
+      
+    </ul>
+  
+  
+
+  </div>
+
+
+  <article class="page has-sidebar has-toc" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Deploying Verrazzano on Oracle Container Engine for Kubernetes (OKE)">
+    
+    <meta itemprop="datePublished" content="2021-11-12T09:11:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Deploying Verrazzano on Oracle Container Engine for Kubernetes (OKE)
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#creating-the-oke-cluster">Creating the OKE cluster</a></li><li><a href="#installing-the-verrazzano-operator">Installing the Verrazzano operator</a></li><li><a href="#installing-verrazzano">Installing Verrazzano</a></li><li><a href="#accessing-verrazzano">Accessing Verrazzano</a><ul><li><a href="#deploy-an-application-to-verrazzano">Deploy an application to Verrazzano</a></li></ul></li><li><a href="#observability">Observability</a></li><li><a href="#summary">Summary</a></li></ul>
+
+            </nav>
+          </aside>
+        
+
+        <picture class="alignright">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-logo.png 1x" />
+                <img loading="lazy" width="400" height="400" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-logo.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-logo.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-logo@2x.png" alt="Verrazzano Logo" title="Verrazzano Logo" />
+            </picture>
+
+<p>Oracle recently released <a href="https://verrazzano.io/">Verrazzano</a>, an “end-to-end container platform to deploy cloud native and traditional applications in multi-cloud and hybrid environments.” If that’s a lot to take in, it’s because Verrazzano, (v8o for short) packs a lot. In this post, we will explore deploying Verrazzano on <a href="https://docs.oracle.com/en-us/iaas/Content/ContEng/home.htm#top?source=:ex:tb:::::WWMK211117P00086:WW_FY22_DevRel_DotBuild&SC=:ex:tb:::::WWMK211117P00086:WW_FY22_DevRel_DotBuild&pcode=WWMK211117P00086">OKE (Oracle Container Engine)</a>.</p>
+
+<p>The single cluster deployment model is easy:</p>
+<ul>
+  <li>Create a Kubernetes cluster</li>
+  <li>Install the Verrazzano platform operator</li>
+  <li>Install Verrazzano</li>
+</ul>
+
+<p>After this, you can deploy your application of choice.</p>
+
+<p>Remember, if you don’t yet have an OCI account, you can quickly sign up for one today by registering for an <a href="https://www.oracle.com/cloud/free/#always-free?source=:ex:tb:::::WWMK211117P00086:WW_FY22_DevRel_DotBuild&SC=:ex:tb:::::WWMK211117P00086:WW_FY22_DevRel_DotBuild&pcode=WWMK211117P00086">Oracle Cloud Free Tier</a> account.</p>
+
+<h2 id="creating-the-oke-cluster">Creating the OKE cluster</h2>
+<p>We will start by creating the OKE cluster using <a href="https://github.com/oracle-terraform-modules/terraform-oci-oke">Terraform OKE module</a>. Since we are only taking Verrazzano for a spin, we only need the bare minimum features. Follow the <a href="https://github.com/oracle-terraform-modules/terraform-oci-oke/blob/main/docs/quickstart.adoc">quickstart</a> guide, create the providers and create a copy of the terraform.tfvars.example and rename the copy to terraform.tfvars. Ensure the following features/resources are enabled/created:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create_bastion_host = true
+bastion_access = ["anywhere"]
+create_operator                    = true
+enable_operator_instance_principal = true
+node_pools = {
+  np1 = { shape = "VM.Standard.E4.Flex", ocpus = 2, memory = 32, node_pool_size = 2, boot_volume_size = 150}
+}
+</code></pre></div></div>
+
+<p>Follow the rest of the quickstart to run terraform init and apply.</p>
+
+<p>Once the cluster is created, use the convenient output to copy the command to ssh to the operator host:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh_to_operator = "ssh -i ~/.ssh/id_rsa -J opc@xyz.xyz.xyz.xyz opc@10.0.0.12"
+</code></pre></div></div>
+
+<p>From here onwards, all kubectl commands are executed on the operator host.</p>
+
+<h2 id="installing-the-verrazzano-operator">Installing the Verrazzano operator</h2>
+
+<p>Let’s first install the Verrazzano operator:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.0.1/operator.yaml
+</code></pre></div></div>
+
+<p>and wait for the deployment to complete:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl -n verrazzano-install rollout status deployment/verrazzano-platform-operator
+Waiting for deployment “verrazzano-platform-operator” rollout to finish: 0 of 1 updated replicas are available…
+</code></pre></div></div>
+
+<p>Give it a couple of minutes and the operator should have deployed by then. Verify that the operator is running:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl -n verrazzano-install get pods
+NAME                                            READY   STATUS    RESTARTS   AGE
+verrazzano-platform-operator-5f788568fd-w8cz7   1/1     Running   0          80s
+</code></pre></div></div>
+
+<h2 id="installing-verrazzano">Installing Verrazzano</h2>
+
+<p>We can now install Verrazzano. We will use the dev profile for this exercise:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f - &lt;&lt;EOF
+apiVersion: install.verrazzano.io/v1alpha1
+kind: Verrazzano
+metadata:
+  name: hello-verrazzano
+spec:
+  profile: dev
+EOF
+</code></pre></div></div>
+
+<p>We need to wait for Verrazzano to install:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl wait \
+    --timeout=20m \
+    --for=condition=InstallComplete \
+    verrazzano/
+</code></pre></div></div>
+
+<h2 id="accessing-verrazzano">Accessing Verrazzano</h2>
+
+<p>In order to access Verrazzano, you need to get the console URL:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get vz -o yaml
+</code></pre></div></div>
+
+<p>You will get a list of URLs printed. For example, my Verrazzano console URL is <code class="language-plaintext highlighter-rouge">https://verrazzano.default.168.138.102.88.nip.io</code>.</p>
+
+<p>Access this url in your browser and you will be prompted to login:</p>
+
+<picture class="aligncenter">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-login.png 1x" />
+                <img loading="lazy" width="1024" height="557" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-login.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-login.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-login@2x.png" alt="Verrazzano Login Screen" title="Verrazzano Login Screen" />
+            </picture>
+
+<p>The username is <code class="language-plaintext highlighter-rouge">verrazzano</code> and you can obtain the password by issuing the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get secret \
+    --namespace verrazzano-system verrazzano \
+    -o jsonpath={.data.password} | base64 \
+    --decode; echo
+</code></pre></div></div>
+
+<p>You should now be able to access the Verrazzano console:</p>
+
+<picture class="aligncenter">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-console.png 1x" />
+                <img loading="lazy" width="1024" height="557" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-console.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-console.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-console@2x.png" alt="Verrazzano Console" title="Verrazzano Console" />
+            </picture>
+
+<h3 id="deploy-an-application-to-verrazzano">Deploy an application to Verrazzano</h3>
+
+<p>We will deploy the hello-helidon application. First, create a namespace:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create namespace hello-helidon
+</code></pre></div></div>
+
+<p>and add labels to identify the namespace as managed by Verrazzano and enabled for Istio:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl label namespace hello-helidon verrazzano-managed=true istio-injection=enabled
+</code></pre></div></div>
+
+<p>Next, deploy the Verrazzano <a href="https://verrazzano.io/docs/applications/#components">component</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f https://raw.githubusercontent.com/verrazzano/verrazzano/master/examples/hello-helidon/hello-helidon-comp.yaml
+</code></pre></div></div>
+
+<p>Then create the <a href="https://verrazzano.io/docs/applications/#application-configurations">Application Configuration</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f https://raw.githubusercontent.com/verrazzano/verrazzano/master/examples/hello-helidon/hello-helidon-app.yaml
+</code></pre></div></div>
+<p>You can now get the name of your pod:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get pods -n hello-helidon
+NAME                                        READY   STATUS    RESTARTS   AGEhello-helidon-deployment-54979d7d74-6c9nw   1/1     Running   0          2m18s
+</code></pre></div></div>
+
+<p>And check if the application is ready:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl wait — timeout=300s — for=condition=Ready -n hello-helidon pod/hello-helidon-deployment-54979d7d74–6c9nw
+pod/hello-helidon-deployment-54979d7d74-6c9nw condition met
+</code></pre></div></div>
+
+<p>Lookup the hostname of the load balancer:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HOST=$(kubectl get gateway hello-helidon-hello-helidon-appconf-gw \
+    -n hello-helidon \
+    -o jsonpath='{.spec.servers[0].hosts[0]}')
+</code></pre></div></div>
+
+<p>You can then test the application:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -sk \
+    -X GET \
+    "https://${HOST}/greet"
+</code></pre></div></div>
+
+<p>This should return you the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"message":"Hello World!"}
+</code></pre></div></div>
+
+<h2 id="observability">Observability</h2>
+
+<p>Now, that we’ve got our application running and accessible, we want to also look at its logs and metrics. Verrazzano has got you covered in the form of the ELK stack for logging and the combination of Prometheus and Grafana for metrics and performance monitoring.</p>
+
+<p>Let’s look at Grafana first. On the main page of the Verrazzano console, you will see a link to Grafana. You can use the same combination of username and password you used to log into Grafana. Once logged in, click on “Home” and select the “Helidon Monitoring Dashboard”:</p>
+
+<picture class="aligncenter">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-grafana.png 1x" />
+                <img loading="lazy" width="1024" height="557" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-grafana.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-grafana.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-grafana@2x.png" alt="Grafana" title="Grafana" />
+            </picture>
+
+<p>Similarly, access the Kibana dashboard and click on Visualize icon in the left menu. You will be prompted to create an index pattern. Select the verrazzano* and follow the wizard to add the index pattern. Search for hello-helidon and you should be able to see the following:</p>
+
+<picture class="aligncenter">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-kibana.png 1x" />
+                <img loading="lazy" width="1024" height="557" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-kibana.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-kibana.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-kibana@2x.png" alt="Kibana" title="Kibana" />
+            </picture>
+
+<p>From here, you can create your own visualizations and dashboards.</p>
+
+<p>What if we want to peek at the Kubernetes cluster itself? Again, Verrazzano has got you covered. From the Verrazzano console, locate the link to Rancher and click on it. The default username is “admin” and you can retrieve the password as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get secret \
+    --namespace cattle-system rancher-admin-secret \
+    -o jsonpath={.data.password} | base64 \
+    --decode; echo
+</code></pre></div></div>
+
+<p>Once logged in, you will land on the cluster page and you will see an Explorer button. Click on it and you will be able to view your Kubernetes cluster:</p>
+
+<picture class="aligncenter">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-rancher.png 1x" />
+                <img loading="lazy" width="1024" height="557" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-rancher.png" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-rancher.png" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/verrazzano-rancher@2x.png" alt="Rancher" title="Rancher" />
+            </picture>
+
+<h2 id="summary">Summary</h2>
+
+<p>Verrazzano packs a nice set of capabilities that helps you with the operational side of of Kubernetes. From monitoring to logging and security, there is a lot productivity that a Kubernetes or an application administrator can gain.</p>
+
+<p>I hope you find this article helpful. In future, we will explore other features of Verrazzano, including multi-cluster deployment and network security among others.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-11-12T09:11:00+00:00">November 12, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/main.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+    <li>
+      Back to <a href="https://developer.oracle.com?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildFooter&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetFooter">Developer.Oracle.com</a>
+    </li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Oracle</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="/assets/js/custom.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  
+    <script src="/assets/js/plugins/readmore.min.js"></script>
+  
+
+
+<!-- Start SiteCatalyst code -->
+<script>
+  var s_pageName = "devrel:en-us:";
+  if (typeof(document.title) != "undefined") {
+    var s_pageName = s_pageName + document.title.trim()
+  };
+</script>
+<script src="https://www.oracleimg.com/us/assets/metrics/ora_otn.js"></script>
+<!-- End SiteCatalyst code -->
+
+
+  </body>
+  
+</html>

@@ -1,0 +1,504 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Sending Emails from OCI with Email Delivery Service in Node.js - Oracle Developer Tutorials</title>
+<meta name="description" content="Use Oracle Cloud Infrastructure to manage a high-volume email solution for sending out emails to many recipients for critical communications.">
+
+
+  <meta name="author" content="Javier Mugueta">
+  
+  <meta property="article:author" content="Javier Mugueta">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Oracle Developer Tutorials">
+<meta property="og:title" content="Sending Emails from OCI with Email Delivery Service in Node.js">
+<meta property="og:url" content="https://cool.devo.build/tutorials/nodejs-sendmail-oci">
+
+
+  <meta property="og:description" content="Use Oracle Cloud Infrastructure to manage a high-volume email solution for sending out emails to many recipients for critical communications.">
+
+
+
+  <meta property="og:image" content="https://cool.devo.build/tutorials/assets/ociemailimage-10.jpg">
+
+
+
+
+  <meta name="twitter:site" content="@groundbreakers">
+  <meta name="twitter:title" content="Sending Emails from OCI with Email Delivery Service in Node.js">
+  <meta name="twitter:description" content="Use Oracle Cloud Infrastructure to manage a high-volume email solution for sending out emails to many recipients for critical communications.">
+  <meta name="twitter:url" content="https://cool.devo.build/tutorials/nodejs-sendmail-oci">
+
+  
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://cool.devo.build/tutorials/assets/ociemailimage-10.jpg">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2022-02-14T19:42:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://cool.devo.build/tutorials/nodejs-sendmail-oci">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://cool.devo.build/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/main.xml" type="application/atom+xml" rel="alternate" title="Oracle Developer Tutorials Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+<link rel="icon" href="https://www.oracle.com/asset/web/favicons/favicon-32.png" sizes="32x32">
+
+    
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead oracle-header oracle-headerv1 oracle-headeradj oracle-headerdev">
+  <div class="masthead__inner-wrap oracle-headerw1">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <div class="oracle-headers1 site-logo">
+          <a class="oracle-logo" href="https://developer.oracle.com/"><span>Oracle</span></a>
+        </div>
+        <div class="u18-title site-title">
+          <a href="/">
+            Oracle Developer Tutorials
+            
+          </a>
+        </div>
+
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/topics/">Explore Topics</a>
+            </li><li class="masthead__menu-item">
+            <a href="https://signup.cloud.oracle.com/?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetStarted">Try Oracle Free</a>
+          </li>
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+
+    <div class="sidebar sticky">
+    <p><strong>Tags:</strong> <span class="tags">
+
+            
+            <a class="animated-link tag" href="/topics/open-source">open-source</a>
+            <a class="animated-link tag" href="/topics/oci">oci</a>
+            <a class="animated-link tag" href="/topics/always-free">always-free</a>
+            <a class="animated-link tag" href="/topics/nodejs">nodejs</a>
+            <a class="animated-link tag" href="/topics/javascript">javascript</a>
+            </span>
+    </p>
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <a href="https:/javiermugueta.blog/author/javiermugueta/"><h3 class="author__name" itemprop="name">Javier Mugueta</h3></a>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  
+  
+  <p><strong>From this author:</strong>
+    <ul>
+      
+        <li><a href="/tutorials/oke-nodejs-webapp-sso-ex">Deploying a Custom Nodejs Web Application Integrated with Identity Cloud Service for Unique Single Sign On UX</a></li>
+      
+        <li><a href="/tutorials/tracing-node-js-micro-service-oci">Tracing A Node.js with OCI Application Performance Monitoring and Zipkin</a></li>
+      
+    </ul>
+  
+  
+
+  </div>
+
+
+  <article class="page has-sidebar" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Sending Emails from OCI with Email Delivery Service in Node.js">
+    
+    <meta itemprop="datePublished" content="2022-02-14T19:42:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Sending Emails from OCI with Email Delivery Service in Node.js
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+
+        <p>Oracle Cloud Infrastructure <a href="https://docs.oracle.com/en-us/iaas/Content/Email/Concepts/overview.htm?source=:ex:tb:::::WWMK220204P00005:WW_FY22_DevRel_DotBuild&SC=:ex:tb:::::WWMK220204P00005:WW_FY22_DevRel_DotBuild&pcode=WWMK220204P00005">Email Delivery</a> is an email sending service that provides a fast and reliable managed solution for sending high-volume emails that need to reach your recipients’ inbox. Email Delivery provides the tools necessary to send application-generated email for mission-critical communications such as receipts, fraud detection alerts, multi-factor identity verification, and password resets.</p>
+
+<p>Go to a IAM/user and click on [Generate SMTP Credentials] as shown below:</p>
+
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-6.jpg 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-6.jpg" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-6.jpg" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-6@2x.jpg" />
+            </picture>
+
+<p>Keep the credentials created in a safe place:</p>
+
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-7.jpg 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-7.jpg" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-7.jpg" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-7@2x.jpg" />
+            </picture>
+
+<p>Create an Approved Sender (a real existing email account to put in the from field):</p>
+
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-8.jpg 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-8.jpg" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-8.jpg" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-8@2x.jpg" />
+            </picture>
+
+<p>Grab the connection details:</p>
+
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-9.jpg 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-9.jpg" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-9.jpg" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-9@2x.jpg" />
+            </picture>
+
+<p>Now test the code:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">npm install [nodemailer](https://nodemailer.com/about/)
+</span></code></pre></div></div>
+
+<p>Create a sendmail.js file:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">var nodemailer = require('nodemailer');</span><span class="w">
+</span><span class="go">async function main() {
+</span><span class="gp">let testAccount = await nodemailer.createTestAccount();</span><span class="w">
+</span><span class="go">let transporter = nodemailer.createTransport({
+  host: "smtp.email.eu-frankfurt-1.oci.oraclecloud.com",
+  port: 25,
+  secure: false,
+  auth: {
+    user: 'ocid1.user.oc1..aaaaaa...om', 
+    pass: 'BD..._', 
+  },
+</span><span class="gp">});</span><span class="w">
+</span><span class="go">let info = await transporter.sendMail({
+  from: '"javier...om', 
+  to: "javi...om", 
+  subject: "ssh access to 10.0.2.94",
+</span><span class="gp">  html: "&lt;b&gt;</span>ssh <span class="nt">-i</span> deltakey <span class="nt">-o</span> <span class="nv">ProxyCommand</span><span class="o">=</span><span class="se">\"</span>ssh <span class="nt">-i</span> deltakey <span class="nt">-W</span> %h:%p <span class="nt">-p</span> 22 ocid1.bast...oud.com<span class="se">\"</span> <span class="nt">-p</span> 22 opc@10.0.2.94&lt;/b&gt;<span class="s2">", 
+</span><span class="gp">});</span><span class="w">
+</span><span class="gp">console.log("Message sent: %s", info.messageId);</span><span class="w">
+</span><span class="gp">console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));</span><span class="w">
+</span><span class="go">}
+</span><span class="gp">main().catch(console.error);</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Test it:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">node sendmail.js
+</span></code></pre></div></div>
+
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-10.jpg 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-10.jpg" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-10.jpg" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-10@2x.jpg" />
+            </picture>
+<picture class="">
+                <source srcset="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-11.jpg 1x" />
+                <img loading="lazy" src="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-11.jpg" data-original="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-11.jpg" data-at2x="https://github.com/oracle-devrel/devo.tutorials/raw/main/assets/ociemailimage-11@2x.jpg" />
+            </picture>
+
+<p>That’s all, hope it helps! 🙂</p>
+
+<p>If you’re curious about the goings-on of Oracle Developers in their natural habitat, come join us on our <a href="https://oracledevrel.slack.com/join/shared_invite/zt-uffjmwh3-ksmv2ii9YxSkc6IpbokL1g#/shared-invite/email">public Slack channel</a>!</p>
+
+<p>And don’t forget our <a href="https://signup.cloud.oracle.com/?language=en&source=:ex:tb:::::WWMK220204P00005:WW_FY22_DevRel_DotBuild&SC=:ex:tb:::::WWMK220204P00005:WW_FY22_DevRel_DotBuild&pcode=WWMK220204P00005">free tier</a>, where you can try out what we just discussed.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-02-14T19:42:00+00:00">February 14, 2022</time></p>
+
+
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/main.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+    <li>
+      Back to <a href="https://developer.oracle.com?language=en&sourceType=:ow:de:te::::RC_WWMK211116P00260:DotBuildFooter&intcmp=:ow:de:te::::RC_WWMK211116P00260:DotBuildGetFooter">Developer.Oracle.com</a>
+    </li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Oracle</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="/assets/js/custom.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  
+    <script src="/assets/js/plugins/readmore.min.js"></script>
+  
+
+
+<!-- Start SiteCatalyst code -->
+<script>
+  var s_pageName = "devrel:en-us:";
+  if (typeof(document.title) != "undefined") {
+    var s_pageName = s_pageName + document.title.trim()
+  };
+</script>
+<script src="https://www.oracleimg.com/us/assets/metrics/ora_otn.js"></script>
+<!-- End SiteCatalyst code -->
+
+
+  </body>
+  
+</html>
